@@ -31,14 +31,26 @@ namespace LightRays
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panelSingleColor = new System.Windows.Forms.Panel();
+            this.color7 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.color6 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.color5 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.color4 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.color3 = new System.Windows.Forms.Panel();
+            this.color2 = new System.Windows.Forms.Panel();
+            this.color1 = new System.Windows.Forms.Panel();
+            this.panelPort = new System.Windows.Forms.Panel();
+            this.panelEffekt = new System.Windows.Forms.Panel();
             this.panelZone = new System.Windows.Forms.Panel();
             this.labelZone = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.dropdownZone = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.panelEffekt = new System.Windows.Forms.Panel();
             this.dropdownEffekt = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnApply = new System.Windows.Forms.Panel();
@@ -47,48 +59,34 @@ namespace LightRays
             this.labelComPort = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.panelPort = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.dropdownPort = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panelColormix = new System.Windows.Forms.Panel();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.trackBar3 = new System.Windows.Forms.TrackBar();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel4 = new System.Windows.Forms.Panel();
             this.icon_hide = new System.Windows.Forms.PictureBox();
             this.icon_exit = new System.Windows.Forms.PictureBox();
             this.panelRight = new System.Windows.Forms.Panel();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.panel2.SuspendLayout();
+            this.panelSingleColor.SuspendLayout();
+            this.color7.SuspendLayout();
+            this.color6.SuspendLayout();
+            this.color5.SuspendLayout();
+            this.color4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dropdownZone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dropdownEffekt)).BeginInit();
             this.btnApply.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dropdownPort)).BeginInit();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon_hide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_exit)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label1.Location = new System.Drawing.Point(15, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "LightRays v0.1";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.panelSingleColor);
             this.panel2.Controls.Add(this.panelPort);
             this.panel2.Controls.Add(this.panelEffekt);
             this.panel2.Controls.Add(this.panelZone);
@@ -106,11 +104,137 @@ namespace LightRays
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.dropdownPort);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.panel5);
             this.panel2.Location = new System.Drawing.Point(320, 24);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(579, 555);
             this.panel2.TabIndex = 5;
+            // 
+            // panelSingleColor
+            // 
+            this.panelSingleColor.BackColor = System.Drawing.Color.Black;
+            this.panelSingleColor.Controls.Add(this.color7);
+            this.panelSingleColor.Controls.Add(this.color6);
+            this.panelSingleColor.Controls.Add(this.color5);
+            this.panelSingleColor.Controls.Add(this.color4);
+            this.panelSingleColor.Controls.Add(this.color3);
+            this.panelSingleColor.Controls.Add(this.color2);
+            this.panelSingleColor.Controls.Add(this.color1);
+            this.panelSingleColor.Location = new System.Drawing.Point(231, 481);
+            this.panelSingleColor.Name = "panelSingleColor";
+            this.panelSingleColor.Size = new System.Drawing.Size(326, 50);
+            this.panelSingleColor.TabIndex = 9;
+            this.panelSingleColor.Visible = false;
+            // 
+            // color7
+            // 
+            this.color7.BackColor = System.Drawing.Color.White;
+            this.color7.Controls.Add(this.panel13);
+            this.color7.Location = new System.Drawing.Point(279, 3);
+            this.color7.Name = "color7";
+            this.color7.Size = new System.Drawing.Size(44, 44);
+            this.color7.TabIndex = 7;
+            // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.Color.White;
+            this.panel13.Location = new System.Drawing.Point(50, 0);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(44, 44);
+            this.panel13.TabIndex = 4;
+            // 
+            // color6
+            // 
+            this.color6.BackColor = System.Drawing.Color.White;
+            this.color6.Controls.Add(this.panel11);
+            this.color6.Location = new System.Drawing.Point(233, 3);
+            this.color6.Name = "color6";
+            this.color6.Size = new System.Drawing.Size(44, 44);
+            this.color6.TabIndex = 6;
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.White;
+            this.panel11.Location = new System.Drawing.Point(50, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(44, 44);
+            this.panel11.TabIndex = 4;
+            // 
+            // color5
+            // 
+            this.color5.BackColor = System.Drawing.Color.White;
+            this.color5.Controls.Add(this.panel9);
+            this.color5.Location = new System.Drawing.Point(187, 3);
+            this.color5.Name = "color5";
+            this.color5.Size = new System.Drawing.Size(44, 44);
+            this.color5.TabIndex = 5;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.White;
+            this.panel9.Location = new System.Drawing.Point(50, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(44, 44);
+            this.panel9.TabIndex = 4;
+            // 
+            // color4
+            // 
+            this.color4.BackColor = System.Drawing.Color.White;
+            this.color4.Controls.Add(this.panel7);
+            this.color4.Location = new System.Drawing.Point(141, 3);
+            this.color4.Name = "color4";
+            this.color4.Size = new System.Drawing.Size(44, 44);
+            this.color4.TabIndex = 3;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.White;
+            this.panel7.Location = new System.Drawing.Point(50, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(44, 44);
+            this.panel7.TabIndex = 4;
+            // 
+            // color3
+            // 
+            this.color3.BackColor = System.Drawing.Color.White;
+            this.color3.Location = new System.Drawing.Point(95, 3);
+            this.color3.Name = "color3";
+            this.color3.Size = new System.Drawing.Size(44, 44);
+            this.color3.TabIndex = 2;
+            // 
+            // color2
+            // 
+            this.color2.BackColor = System.Drawing.Color.White;
+            this.color2.Location = new System.Drawing.Point(49, 3);
+            this.color2.Name = "color2";
+            this.color2.Size = new System.Drawing.Size(44, 44);
+            this.color2.TabIndex = 1;
+            // 
+            // color1
+            // 
+            this.color1.BackColor = System.Drawing.Color.White;
+            this.color1.Location = new System.Drawing.Point(3, 3);
+            this.color1.Name = "color1";
+            this.color1.Size = new System.Drawing.Size(44, 44);
+            this.color1.TabIndex = 0;
+            this.color1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseDoubleClick);
+            // 
+            // panelPort
+            // 
+            this.panelPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.panelPort.Location = new System.Drawing.Point(22, 121);
+            this.panelPort.Name = "panelPort";
+            this.panelPort.Size = new System.Drawing.Size(82, 42);
+            this.panelPort.TabIndex = 7;
+            this.panelPort.Visible = false;
+            // 
+            // panelEffekt
+            // 
+            this.panelEffekt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.panelEffekt.Location = new System.Drawing.Point(22, 209);
+            this.panelEffekt.Name = "panelEffekt";
+            this.panelEffekt.Size = new System.Drawing.Size(160, 42);
+            this.panelEffekt.TabIndex = 8;
+            this.panelEffekt.Visible = false;
             // 
             // panelZone
             // 
@@ -170,15 +294,6 @@ namespace LightRays
             this.label8.TabIndex = 15;
             this.label8.Text = "Zone";
             // 
-            // panelEffekt
-            // 
-            this.panelEffekt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.panelEffekt.Location = new System.Drawing.Point(22, 209);
-            this.panelEffekt.Name = "panelEffekt";
-            this.panelEffekt.Size = new System.Drawing.Size(160, 42);
-            this.panelEffekt.TabIndex = 8;
-            this.panelEffekt.Visible = false;
-            // 
             // dropdownEffekt
             // 
             this.dropdownEffekt.Image = global::LightRays.Properties.Resources.background_dropdown_effekt;
@@ -207,22 +322,29 @@ namespace LightRays
             // 
             this.btnApply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.btnApply.Controls.Add(this.btnApplyLabel);
-            this.btnApply.Location = new System.Drawing.Point(22, 481);
+            this.btnApply.Location = new System.Drawing.Point(23, 499);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(150, 31);
+            this.btnApply.Size = new System.Drawing.Size(160, 32);
             this.btnApply.TabIndex = 8;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            this.btnApply.MouseEnter += new System.EventHandler(this.btnApply_MouseEnter);
+            this.btnApply.MouseLeave += new System.EventHandler(this.btnApply_MouseLeave);
             // 
             // btnApplyLabel
             // 
             this.btnApplyLabel.AutoSize = true;
+            this.btnApplyLabel.BackColor = System.Drawing.Color.Transparent;
             this.btnApplyLabel.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnApplyLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnApplyLabel.Location = new System.Drawing.Point(37, 5);
+            this.btnApplyLabel.Location = new System.Drawing.Point(41, 5);
             this.btnApplyLabel.Margin = new System.Windows.Forms.Padding(0, 5, 0, 25);
             this.btnApplyLabel.Name = "btnApplyLabel";
             this.btnApplyLabel.Size = new System.Drawing.Size(79, 20);
             this.btnApplyLabel.TabIndex = 13;
             this.btnApplyLabel.Text = "Anwenden";
+            this.btnApplyLabel.Click += new System.EventHandler(this.btnApply_Click);
+            this.btnApplyLabel.MouseEnter += new System.EventHandler(this.btnApply_MouseEnter);
+            this.btnApplyLabel.MouseLeave += new System.EventHandler(this.btnApply_MouseLeave);
             // 
             // labelEffekt
             // 
@@ -274,15 +396,6 @@ namespace LightRays
             this.label6.TabIndex = 9;
             this.label6.Text = "COM Port";
             // 
-            // panelPort
-            // 
-            this.panelPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.panelPort.Location = new System.Drawing.Point(22, 121);
-            this.panelPort.Name = "panelPort";
-            this.panelPort.Size = new System.Drawing.Size(82, 42);
-            this.panelPort.TabIndex = 7;
-            this.panelPort.Visible = false;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -318,57 +431,6 @@ namespace LightRays
             this.label2.Size = new System.Drawing.Size(136, 37);
             this.label2.TabIndex = 6;
             this.label2.Text = "Rear Light";
-            // 
-            // panel5
-            // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.panelColormix);
-            this.panel5.Controls.Add(this.trackBar1);
-            this.panel5.Controls.Add(this.label1);
-            this.panel5.Controls.Add(this.trackBar2);
-            this.panel5.Controls.Add(this.trackBar3);
-            this.panel5.Location = new System.Drawing.Point(525, 486);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(418, 211);
-            this.panel5.TabIndex = 5;
-            // 
-            // panelColormix
-            // 
-            this.panelColormix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelColormix.Location = new System.Drawing.Point(28, 87);
-            this.panelColormix.Name = "panelColormix";
-            this.panelColormix.Size = new System.Drawing.Size(76, 68);
-            this.panelColormix.TabIndex = 5;
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.BackColor = System.Drawing.Color.Red;
-            this.trackBar1.Location = new System.Drawing.Point(168, 36);
-            this.trackBar1.Maximum = 255;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(230, 45);
-            this.trackBar1.TabIndex = 6;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
-            // trackBar2
-            // 
-            this.trackBar2.BackColor = System.Drawing.Color.Blue;
-            this.trackBar2.Location = new System.Drawing.Point(168, 87);
-            this.trackBar2.Maximum = 255;
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(230, 45);
-            this.trackBar2.TabIndex = 7;
-            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
-            // 
-            // trackBar3
-            // 
-            this.trackBar3.BackColor = System.Drawing.Color.Green;
-            this.trackBar3.Location = new System.Drawing.Point(168, 138);
-            this.trackBar3.Maximum = 255;
-            this.trackBar3.Name = "trackBar3";
-            this.trackBar3.Size = new System.Drawing.Size(230, 45);
-            this.trackBar3.TabIndex = 8;
-            this.trackBar3.Scroll += new System.EventHandler(this.trackBar3_Scroll);
             // 
             // notifyIcon
             // 
@@ -447,16 +509,16 @@ namespace LightRays
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panelSingleColor.ResumeLayout(false);
+            this.color7.ResumeLayout(false);
+            this.color6.ResumeLayout(false);
+            this.color5.ResumeLayout(false);
+            this.color4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dropdownZone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dropdownEffekt)).EndInit();
             this.btnApply.ResumeLayout(false);
             this.btnApply.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dropdownPort)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.icon_hide)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_exit)).EndInit();
@@ -465,17 +527,11 @@ namespace LightRays
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox icon_exit;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TrackBar trackBar3;
-        private System.Windows.Forms.TrackBar trackBar2;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Panel panelColormix;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.PictureBox icon_hide;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panelRight;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelPort;
@@ -495,6 +551,19 @@ namespace LightRays
         private System.Windows.Forms.PictureBox dropdownZone;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panelZone;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Panel panelSingleColor;
+        private System.Windows.Forms.Panel color7;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Panel color6;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel color5;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel color4;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel color3;
+        private System.Windows.Forms.Panel color2;
+        private System.Windows.Forms.Panel color1;
     }
 }
 

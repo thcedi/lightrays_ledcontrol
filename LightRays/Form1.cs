@@ -113,6 +113,37 @@ namespace LightRays
             dropdownZone.Image = Properties.Resources.background_dropdown_zonet;
         }
 
+        private void btnApply_MouseEnter(object sender, EventArgs e)
+        {
+            btnApply.BackgroundImage = Properties.Resources.background_button_apply_selected;
+        }
+
+        private void btnApply_MouseLeave(object sender, EventArgs e)
+        {
+            btnApply.BackgroundImage = null;
+        }
+
+        private void dropdownEffekt_Click(object sender, EventArgs e)
+        {
+            panelEffekt.Visible = true;
+            panelZone.Visible = false;
+            panelPort.Visible = false;
+        }
+
+        private void buttonPort_Click(object sender, EventArgs e)
+        {
+            panelPort.Visible = true;
+            panelZone.Visible = false;
+            panelEffekt.Visible = false;
+        }
+
+        private void dropdownZone_Click(object sender, EventArgs e)
+        {
+            panelZone.Visible = true;
+            panelEffekt.Visible = false;
+            panelPort.Visible = false;
+        }
+
         private void dropdownItem_MouseLeave(object sender, EventArgs e)
         {
             if (sender.GetType() == typeof(Panel))
@@ -175,7 +206,7 @@ namespace LightRays
             }
 
             // Get effects
-            var effects = new List<string>() { "Single color", "Rainbow", "Fade", "Huewheel", "Comet" };
+            var effects = new List<string>() { "Single color", "Rainbow", "Fade", "Fire", "Comet" };
             panelEffekt.Height = effects.Count() * 30 + 12;
             for (int i = 0; i < effects.Count(); i++)
             {
@@ -221,84 +252,11 @@ namespace LightRays
         public string Port = "";
         public string Effect = "";
         public string Zone = "";
-        public int r = 0;
-        public int g = 0;
-        public int b = 0;
         public SerialHelper _serialHelper;
 
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            //r = trackBar1.Value;
-            //panelColormix.BackColor = Color.FromArgb(r, g, b);
-
-            //if ((string)comboBoxEffect.SelectedItem == "Single color")
-            //{
-            //    Effect = string.Format("{0},{1},{2}", r, g, b);
-            //}
-        }
-
-        private void trackBar3_Scroll(object sender, EventArgs e)
-        {
-            //g = trackBar3.Value;
-            //panelColormix.BackColor = Color.FromArgb(r, g, b);
-
-            //if ((string)comboBoxEffect.SelectedItem == "Single color")
-            //{
-            //    Effect = string.Format("{0},{1},{2}", r, g, b);
-            //}
-        }
-
-        private void trackBar2_Scroll(object sender, EventArgs e)
-        {
-            //b = trackBar2.Value;
-            //panelColormix.BackColor = Color.FromArgb(r, g, b);
-
-            //if ((string)comboBoxEffect.SelectedItem == "Single color")
-            //{
-            //    Effect = string.Format("{0},{1},{2}", r, g, b);
-            //}
-        }
-
-        private void comboBoxEffect_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // var item = (string)comboBoxEffect.SelectedItem;
-            //switch (item)
-            //{
-            //    case "Rainbow":
-            //        Effect = "a";
-            //        break;
-            //    case "Single color":
-            //        Effect = string.Format("{0},{1},{2}", r, g, b);
-            //        break;
-            //}
-        }
-
-        private async void buttonApply_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(Zone) || string.IsNullOrEmpty(Effect) || string.IsNullOrEmpty(Port)) return;
-
-            if(Zone == "Sync" && Effect.Contains(','))
-            {
-                await Task.Run(async () => 
-                {
-                    await Task.Delay(10);
-                    _serialHelper.Write(string.Format("1;{0};", Effect));
-                    await Task.Delay(10);
-                    _serialHelper.Write(string.Format("2;{0};", Effect));
-                    await Task.Delay(10);
-                    _serialHelper.Write(string.Format("3;{0};", Effect));
-                });
-
-            }
-            else
-            {
-                _serialHelper.Write(string.Format("{0};{1};", Zone, Effect));
-            }
         }
 
         private void selectPort_Click(object sender, EventArgs e)
@@ -325,18 +283,41 @@ namespace LightRays
 
         private void selectEffekt_Click(object sender, EventArgs e)
         {
+            string selectedEffect = "";
+
             if (sender.GetType() == typeof(Panel))
             {
                 var panel = (Panel)sender;
-                Effect = panel.Controls[0].Text;
+                selectedEffect = panel.Controls[0].Text;
             }
             else if (sender.GetType() == typeof(Label))
             {
                 var label = (Label)sender;
-                Effect = label.Text;
+                selectedEffect = label.Text;
             }
 
-            labelEffekt.Text = Effect;
+            panelSingleColor.Visible = false;
+
+            switch (selectedEffect)
+            {
+                case "Rainbow":
+                    Effect = "a";
+                    break;
+                case "Fade":
+                    Effect = "b";
+                    break;
+                case "Fire":
+                    Effect = "c";
+                    break;
+                case "Comet":
+                    Effect = "d";
+                    break;
+                case "Single color":
+                    panelSingleColor.Visible = true;
+                    break;
+            }
+
+            labelEffekt.Text = selectedEffect;
             panelEffekt.Visible = false;
         }
 
@@ -375,25 +356,55 @@ namespace LightRays
             panelZone.Visible = false;
         }
 
-        private void dropdownEffekt_Click(object sender, EventArgs e)
+        private async void btnApply_Click(object sender, EventArgs e)
         {
-            panelEffekt.Visible = true;
-            panelZone.Visible = false;
-            panelPort.Visible = false;
+            if (string.IsNullOrEmpty(Zone) || string.IsNullOrEmpty(Effect) || string.IsNullOrEmpty(Port)) return;
+
+            if (Zone == "Sync" && Effect.Contains(','))
+            {
+                await Task.Run(async () =>
+                {
+                    await Task.Delay(10);
+                    _serialHelper.Write(string.Format("1;{0};", Effect));
+                    await Task.Delay(10);
+                    _serialHelper.Write(string.Format("2;{0};", Effect));
+                    await Task.Delay(10);
+                    _serialHelper.Write(string.Format("3;{0};", Effect));
+                });
+
+            }
+            else
+            {
+                _serialHelper.Write(string.Format("{0};{1};", Zone, Effect));
+            }
         }
 
-        private void buttonPort_Click(object sender, EventArgs e)
+        private void color_Click(object sender, EventArgs e)
         {
-            panelPort.Visible = true;
-            panelZone.Visible = false;
-            panelEffekt.Visible = false;
+            
         }
 
-        private void dropdownZone_Click(object sender, EventArgs e)
+        private void color1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            panelZone.Visible = true;
-            panelEffekt.Visible = false;
-            panelPort.Visible = false;
+            if (colorDialog1.ShowDialog() == DialogResult.OK) 
+                selectColor((Panel)sender, colorDialog1.Color);
+        }
+
+        private void selectColor(Panel panel, Color color)
+        {
+            var panels = new List<Panel>() { color1, color2, color3, color4, color5, color6, color7 };
+
+            foreach(Panel p in panels)
+            {
+                if(p != panel)
+                {
+                    p.BorderStyle = BorderStyle.None;
+                }
+            }
+
+            panel.BorderStyle = BorderStyle.FixedSingle;
+            panel.BackColor = color;
+            Effect = string.Format("{0},{1},{2}", color.R, color.G, color.B);
         }
     }
 }

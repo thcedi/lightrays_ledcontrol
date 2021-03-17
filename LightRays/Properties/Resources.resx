@@ -118,43 +118,46 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="background_dropdown_effekt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\background_dropdown_effekt.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="background_dropdown_open" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\background_dropdown_open.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="hide_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\hide_icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="background_dropdown_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background_dropdown_selected.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hide_icon_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hide_icon_selected.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="background_dropdown_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\background_dropdown_selected.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="max_icon_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\max_icon_selected.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="close_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close_icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="background_dropdown_port" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\background_dropdown_port.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="background_dropdown_effekt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background_dropdown_effekt.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="max_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\max_icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="close_icon_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close_icon_selected.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="background_dropdown_zonet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background_dropdown_zonet.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="background_dropdown_effekt_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\background_dropdown_effekt_selected.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="close_icon_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close_icon_selected.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="close_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close_icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hide_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hide_icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="background_dropdown_port" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background_dropdown_port.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="background_dropdown_zone_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\background_dropdown_zone_selected.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="background_dropdown_zonet" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\background_dropdown_zonet.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="max_icon_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\max_icon_selected.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="background_dropdown_open" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background_dropdown_open.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="background_button_apply_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background_button_apply_selected.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
