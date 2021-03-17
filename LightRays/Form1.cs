@@ -34,6 +34,8 @@ namespace LightRays
 
         private void icon_exit_Click(object sender, EventArgs e)
         {
+            Hide();
+            notifyIcon.Visible = false;
             Environment.Exit(1);
         }
 
@@ -56,6 +58,18 @@ namespace LightRays
             Show();
             this.WindowState = FormWindowState.Normal;
             notifyIcon.Visible = false;
+        }
+
+        private void labelGithub_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/thcedi/lightrays_ledcontrol");
+        }
+
+        private void icon_back_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+            var cplPath = System.IO.Path.Combine(Environment.SystemDirectory, "control.exe");
+            System.Diagnostics.Process.Start(cplPath, "/name Microsoft.Personalization");
         }
 
         #endregion
@@ -90,27 +104,27 @@ namespace LightRays
 
         private void buttonPort_MouseLeave(object sender, EventArgs e)
         {
-            dropdownPort.Image = Properties.Resources.background_dropdown_port;
+            dropdownPort.Image = Properties.Resources.background_dropdown;
         }
 
         private void dropdownEffekt_MouseEnter(object sender, EventArgs e)
         {
-            dropdownEffekt.Image = Properties.Resources.background_dropdown_effekt_selected;
+            dropdownEffekt.Image = Properties.Resources.background_dropdown_selected;
         }
 
         private void dropdownEffekt_MouseLeave(object sender, EventArgs e)
         {
-            dropdownEffekt.Image = Properties.Resources.background_dropdown_effekt;
+            dropdownEffekt.Image = Properties.Resources.background_dropdown;
         }
 
         private void dropdownZone_MouseEnter(object sender, EventArgs e)
         {
-            dropdownZone.Image = Properties.Resources.background_dropdown_zone_selected;
+            dropdownZone.Image = Properties.Resources.background_dropdown_selected;
         }
 
         private void dropdownZone_MouseLeave(object sender, EventArgs e)
         {
-            dropdownZone.Image = Properties.Resources.background_dropdown_zonet;
+            dropdownZone.Image = Properties.Resources.background_dropdown;
         }
 
         private void btnApply_MouseEnter(object sender, EventArgs e)
@@ -121,6 +135,36 @@ namespace LightRays
         private void btnApply_MouseLeave(object sender, EventArgs e)
         {
             btnApply.BackgroundImage = null;
+        }
+
+        private void labelGithub_MouseEnter(object sender, EventArgs e)
+        {
+            labelGithub.ForeColor = Color.DimGray;
+        }
+
+        private void labelGithub_MouseLeave(object sender, EventArgs e)
+        {
+            labelGithub.ForeColor = Color.FromArgb(0, 120, 215);
+        }
+
+        private void icon_back_MouseEnter(object sender, EventArgs e)
+        {
+            icon_back.Image = Properties.Resources.icon_back_selected;
+        }
+
+        private void icon_back_MouseLeave(object sender, EventArgs e)
+        {
+            icon_back.Image = Properties.Resources.icon_back;
+        }
+
+        private void panelStartseite_MouseEnter(object sender, EventArgs e)
+        {
+            panelStartseite.BackgroundImage = Properties.Resources.button_startseite_selected;
+        }
+
+        private void panelStartseite_MouseLeave(object sender, EventArgs e)
+        {
+            panelStartseite.BackgroundImage = Properties.Resources.button_startseite;
         }
 
         private void dropdownEffekt_Click(object sender, EventArgs e)
@@ -190,9 +234,9 @@ namespace LightRays
             panelPort.Height = ports.Count() * 30 + 12;
             for (int i = 0; i < ports.Count(); i++)
             {
-                var newItem = new Panel() { Location = new Point(2, 6 + (i * 30)), Width = 78, Height = 30, BackColor = Color.FromArgb(0, 38, 66) };
+                var newItem = new Panel() { Location = new Point(2, 6 + (i * 30)), Width = 156, Height = 30, BackColor = Color.FromArgb(0, 38, 66) };
 
-                var newItemLabel = new Label() { Text = ports[i], Location = new Point(2, 4), Font = new Font("Segoe UI", 12, FontStyle.Regular), ForeColor = Color.WhiteSmoke };
+                var newItemLabel = new Label() { Text = ports[i], Location = new Point(2, 5), Font = new Font("Segoe UI", 10, FontStyle.Regular), ForeColor = Color.WhiteSmoke };
                 newItemLabel.MouseEnter += dropdownItem_MouseEnter;
                 newItemLabel.MouseLeave += dropdownItem_MouseLeave;
                 newItemLabel.Click += selectPort_Click;
@@ -212,7 +256,7 @@ namespace LightRays
             {
                 var newItem = new Panel() { Location = new Point(2, 6 + (i * 30)), Width = 156, Height = 30, BackColor = Color.FromArgb(0, 38, 66) };
 
-                var newItemLabel = new Label() { Text = effects[i], Location = new Point(2, 4), Font = new Font("Segoe UI", 12, FontStyle.Regular), ForeColor = Color.WhiteSmoke };
+                var newItemLabel = new Label() { Text = effects[i], Location = new Point(2, 5), Font = new Font("Segoe UI", 10, FontStyle.Regular), ForeColor = Color.WhiteSmoke };
                 newItemLabel.MouseEnter += dropdownItem_MouseEnter;
                 newItemLabel.MouseLeave += dropdownItem_MouseLeave;
                 newItemLabel.Click += selectEffekt_Click;
@@ -232,7 +276,7 @@ namespace LightRays
             {
                 var newItem = new Panel() { Location = new Point(2, 6 + (i * 30)), Width = 156, Height = 30, BackColor = Color.FromArgb(0, 38, 66) };
 
-                var newItemLabel = new Label() { Text = zones[i], Location = new Point(2, 4), Font = new Font("Segoe UI", 12, FontStyle.Regular), ForeColor = Color.WhiteSmoke };
+                var newItemLabel = new Label() { Text = zones[i], Location = new Point(2, 5), Font = new Font("Segoe UI", 10, FontStyle.Regular), ForeColor = Color.WhiteSmoke };
                 newItemLabel.MouseEnter += dropdownItem_MouseEnter;
                 newItemLabel.MouseLeave += dropdownItem_MouseLeave;
                 newItemLabel.Click += selectZone_Click;
@@ -296,7 +340,7 @@ namespace LightRays
                 selectedEffect = label.Text;
             }
 
-            panelSingleColor.Visible = false;
+            panelSingleColor.Visible = labelSelectColor.Visible = false;
 
             switch (selectedEffect)
             {
@@ -313,7 +357,7 @@ namespace LightRays
                     Effect = "d";
                     break;
                 case "Single color":
-                    panelSingleColor.Visible = true;
+                    panelSingleColor.Visible = labelSelectColor.Visible = true;
                     break;
             }
 

@@ -73,19 +73,9 @@ namespace LightRays.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap background_dropdown_effekt {
+        internal static System.Drawing.Bitmap background_dropdown {
             get {
-                object obj = ResourceManager.GetObject("background_dropdown_effekt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap background_dropdown_effekt_selected {
-            get {
-                object obj = ResourceManager.GetObject("background_dropdown_effekt_selected", resourceCulture);
+                object obj = ResourceManager.GetObject("background_dropdown", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,16 +93,6 @@ namespace LightRays.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap background_dropdown_port {
-            get {
-                object obj = ResourceManager.GetObject("background_dropdown_port", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap background_dropdown_selected {
             get {
                 object obj = ResourceManager.GetObject("background_dropdown_selected", resourceCulture);
@@ -123,9 +103,9 @@ namespace LightRays.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap background_dropdown_zone_selected {
+        internal static System.Drawing.Bitmap button_startseite {
             get {
-                object obj = ResourceManager.GetObject("background_dropdown_zone_selected", resourceCulture);
+                object obj = ResourceManager.GetObject("button_startseite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +113,9 @@ namespace LightRays.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap background_dropdown_zonet {
+        internal static System.Drawing.Bitmap button_startseite_selected {
             get {
-                object obj = ResourceManager.GetObject("background_dropdown_zonet", resourceCulture);
+                object obj = ResourceManager.GetObject("button_startseite_selected", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +156,36 @@ namespace LightRays.Properties {
         internal static System.Drawing.Bitmap hide_icon_selected {
             get {
                 object obj = ResourceManager.GetObject("hide_icon_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon {
+            get {
+                object obj = ResourceManager.GetObject("icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_back {
+            get {
+                object obj = ResourceManager.GetObject("icon_back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_back_selected {
+            get {
+                object obj = ResourceManager.GetObject("icon_back_selected", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

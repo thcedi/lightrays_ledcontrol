@@ -48,62 +48,67 @@ namespace LightRays
             this.panelEffekt = new System.Windows.Forms.Panel();
             this.panelZone = new System.Windows.Forms.Panel();
             this.labelZone = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.dropdownZone = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.dropdownEffekt = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnApply = new System.Windows.Forms.Panel();
             this.btnApplyLabel = new System.Windows.Forms.Label();
             this.labelEffekt = new System.Windows.Forms.Label();
             this.labelComPort = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dropdownPort = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel4 = new System.Windows.Forms.Panel();
-            this.icon_hide = new System.Windows.Forms.PictureBox();
-            this.icon_exit = new System.Windows.Forms.PictureBox();
             this.panelRight = new System.Windows.Forms.Panel();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.labelSelectColor = new System.Windows.Forms.Label();
+            this.labelGithub = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelStartseite = new System.Windows.Forms.Panel();
+            this.icon_back = new System.Windows.Forms.PictureBox();
+            this.icon_hide = new System.Windows.Forms.PictureBox();
+            this.icon_exit = new System.Windows.Forms.PictureBox();
+            this.dropdownZone = new System.Windows.Forms.PictureBox();
+            this.dropdownEffekt = new System.Windows.Forms.PictureBox();
+            this.dropdownPort = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             this.panelSingleColor.SuspendLayout();
             this.color7.SuspendLayout();
             this.color6.SuspendLayout();
             this.color5.SuspendLayout();
             this.color4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dropdownZone)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dropdownEffekt)).BeginInit();
             this.btnApply.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dropdownPort)).BeginInit();
             this.panel4.SuspendLayout();
+            this.panelRight.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icon_back)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_hide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_exit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dropdownZone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dropdownEffekt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dropdownPort)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Controls.Add(this.panelSingleColor);
-            this.panel2.Controls.Add(this.panelPort);
+            this.panel2.Controls.Add(this.labelGithub);
             this.panel2.Controls.Add(this.panelEffekt);
+            this.panel2.Controls.Add(this.panelPort);
             this.panel2.Controls.Add(this.panelZone);
             this.panel2.Controls.Add(this.labelZone);
-            this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.dropdownZone);
             this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.labelEffekt);
             this.panel2.Controls.Add(this.dropdownEffekt);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.btnApply);
-            this.panel2.Controls.Add(this.labelEffekt);
             this.panel2.Controls.Add(this.labelComPort);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.dropdownPort);
             this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.labelSelectColor);
+            this.panel2.Controls.Add(this.panelSingleColor);
             this.panel2.Location = new System.Drawing.Point(320, 24);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(579, 555);
@@ -119,7 +124,7 @@ namespace LightRays
             this.panelSingleColor.Controls.Add(this.color3);
             this.panelSingleColor.Controls.Add(this.color2);
             this.panelSingleColor.Controls.Add(this.color1);
-            this.panelSingleColor.Location = new System.Drawing.Point(231, 481);
+            this.panelSingleColor.Location = new System.Drawing.Point(22, 382);
             this.panelSingleColor.Name = "panelSingleColor";
             this.panelSingleColor.Size = new System.Drawing.Size(326, 50);
             this.panelSingleColor.TabIndex = 9;
@@ -133,6 +138,7 @@ namespace LightRays
             this.color7.Name = "color7";
             this.color7.Size = new System.Drawing.Size(44, 44);
             this.color7.TabIndex = 7;
+            this.color7.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseDoubleClick);
             // 
             // panel13
             // 
@@ -150,6 +156,7 @@ namespace LightRays
             this.color6.Name = "color6";
             this.color6.Size = new System.Drawing.Size(44, 44);
             this.color6.TabIndex = 6;
+            this.color6.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseDoubleClick);
             // 
             // panel11
             // 
@@ -167,6 +174,7 @@ namespace LightRays
             this.color5.Name = "color5";
             this.color5.Size = new System.Drawing.Size(44, 44);
             this.color5.TabIndex = 5;
+            this.color5.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseDoubleClick);
             // 
             // panel9
             // 
@@ -184,6 +192,7 @@ namespace LightRays
             this.color4.Name = "color4";
             this.color4.Size = new System.Drawing.Size(44, 44);
             this.color4.TabIndex = 3;
+            this.color4.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseDoubleClick);
             // 
             // panel7
             // 
@@ -200,6 +209,7 @@ namespace LightRays
             this.color3.Name = "color3";
             this.color3.Size = new System.Drawing.Size(44, 44);
             this.color3.TabIndex = 2;
+            this.color3.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseDoubleClick);
             // 
             // color2
             // 
@@ -208,6 +218,7 @@ namespace LightRays
             this.color2.Name = "color2";
             this.color2.Size = new System.Drawing.Size(44, 44);
             this.color2.TabIndex = 1;
+            this.color2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseDoubleClick);
             // 
             // color1
             // 
@@ -223,14 +234,14 @@ namespace LightRays
             this.panelPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
             this.panelPort.Location = new System.Drawing.Point(22, 121);
             this.panelPort.Name = "panelPort";
-            this.panelPort.Size = new System.Drawing.Size(82, 42);
+            this.panelPort.Size = new System.Drawing.Size(160, 42);
             this.panelPort.TabIndex = 7;
             this.panelPort.Visible = false;
             // 
             // panelEffekt
             // 
             this.panelEffekt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.panelEffekt.Location = new System.Drawing.Point(22, 209);
+            this.panelEffekt.Location = new System.Drawing.Point(22, 205);
             this.panelEffekt.Name = "panelEffekt";
             this.panelEffekt.Size = new System.Drawing.Size(160, 42);
             this.panelEffekt.TabIndex = 8;
@@ -249,38 +260,16 @@ namespace LightRays
             // 
             this.labelZone.AutoSize = true;
             this.labelZone.BackColor = System.Drawing.Color.Transparent;
-            this.labelZone.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.labelZone.ForeColor = System.Drawing.Color.DimGray;
-            this.labelZone.Location = new System.Drawing.Point(146, 414);
+            this.labelZone.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.labelZone.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelZone.Location = new System.Drawing.Point(28, 296);
             this.labelZone.Margin = new System.Windows.Forms.Padding(0, 5, 0, 25);
             this.labelZone.Name = "labelZone";
-            this.labelZone.Size = new System.Drawing.Size(43, 20);
+            this.labelZone.Size = new System.Drawing.Size(0, 19);
             this.labelZone.TabIndex = 17;
-            this.labelZone.Text = "Zone";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.label11.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label11.Location = new System.Drawing.Point(19, 414);
-            this.label11.Margin = new System.Windows.Forms.Padding(0, 5, 0, 25);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(43, 20);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "Zone";
-            // 
-            // dropdownZone
-            // 
-            this.dropdownZone.Image = global::LightRays.Properties.Resources.background_dropdown_zonet;
-            this.dropdownZone.Location = new System.Drawing.Point(22, 289);
-            this.dropdownZone.Name = "dropdownZone";
-            this.dropdownZone.Size = new System.Drawing.Size(160, 32);
-            this.dropdownZone.TabIndex = 14;
-            this.dropdownZone.TabStop = false;
-            this.dropdownZone.Click += new System.EventHandler(this.dropdownZone_Click);
-            this.dropdownZone.MouseEnter += new System.EventHandler(this.dropdownZone_MouseEnter);
-            this.dropdownZone.MouseLeave += new System.EventHandler(this.dropdownZone_MouseLeave);
+            this.labelZone.Click += new System.EventHandler(this.dropdownZone_Click);
+            this.labelZone.MouseEnter += new System.EventHandler(this.dropdownZone_MouseEnter);
+            this.labelZone.MouseLeave += new System.EventHandler(this.dropdownZone_MouseLeave);
             // 
             // label8
             // 
@@ -294,24 +283,12 @@ namespace LightRays
             this.label8.TabIndex = 15;
             this.label8.Text = "Zone";
             // 
-            // dropdownEffekt
-            // 
-            this.dropdownEffekt.Image = global::LightRays.Properties.Resources.background_dropdown_effekt;
-            this.dropdownEffekt.Location = new System.Drawing.Point(22, 209);
-            this.dropdownEffekt.Name = "dropdownEffekt";
-            this.dropdownEffekt.Size = new System.Drawing.Size(160, 32);
-            this.dropdownEffekt.TabIndex = 1;
-            this.dropdownEffekt.TabStop = false;
-            this.dropdownEffekt.Click += new System.EventHandler(this.dropdownEffekt_Click);
-            this.dropdownEffekt.MouseEnter += new System.EventHandler(this.dropdownEffekt_MouseEnter);
-            this.dropdownEffekt.MouseLeave += new System.EventHandler(this.dropdownEffekt_MouseLeave);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.label9.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label9.Location = new System.Drawing.Point(19, 182);
+            this.label9.Location = new System.Drawing.Point(19, 178);
             this.label9.Margin = new System.Windows.Forms.Padding(0, 5, 0, 25);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(47, 20);
@@ -350,51 +327,31 @@ namespace LightRays
             // 
             this.labelEffekt.AutoSize = true;
             this.labelEffekt.BackColor = System.Drawing.Color.Transparent;
-            this.labelEffekt.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.labelEffekt.ForeColor = System.Drawing.Color.DimGray;
-            this.labelEffekt.Location = new System.Drawing.Point(145, 386);
+            this.labelEffekt.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.labelEffekt.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelEffekt.Location = new System.Drawing.Point(28, 212);
             this.labelEffekt.Margin = new System.Windows.Forms.Padding(0, 5, 0, 25);
             this.labelEffekt.Name = "labelEffekt";
-            this.labelEffekt.Size = new System.Drawing.Size(47, 20);
+            this.labelEffekt.Size = new System.Drawing.Size(0, 19);
             this.labelEffekt.TabIndex = 12;
-            this.labelEffekt.Text = "Effekt";
+            this.labelEffekt.Click += new System.EventHandler(this.dropdownEffekt_Click);
+            this.labelEffekt.MouseEnter += new System.EventHandler(this.dropdownEffekt_MouseEnter);
+            this.labelEffekt.MouseLeave += new System.EventHandler(this.dropdownEffekt_MouseLeave);
             // 
             // labelComPort
             // 
             this.labelComPort.AutoSize = true;
             this.labelComPort.BackColor = System.Drawing.Color.Transparent;
-            this.labelComPort.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.labelComPort.ForeColor = System.Drawing.Color.DimGray;
-            this.labelComPort.Location = new System.Drawing.Point(145, 357);
+            this.labelComPort.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.labelComPort.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelComPort.Location = new System.Drawing.Point(28, 128);
             this.labelComPort.Margin = new System.Windows.Forms.Padding(0, 5, 0, 25);
             this.labelComPort.Name = "labelComPort";
-            this.labelComPort.Size = new System.Drawing.Size(72, 20);
+            this.labelComPort.Size = new System.Drawing.Size(0, 19);
             this.labelComPort.TabIndex = 11;
-            this.labelComPort.Text = "COM Port";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.label7.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label7.Location = new System.Drawing.Point(18, 386);
-            this.label7.Margin = new System.Windows.Forms.Padding(0, 5, 0, 25);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 20);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Effekt";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.label6.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label6.Location = new System.Drawing.Point(18, 357);
-            this.label6.Margin = new System.Windows.Forms.Padding(0, 5, 0, 25);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 20);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "COM Port";
+            this.labelComPort.Click += new System.EventHandler(this.buttonPort_Click);
+            this.labelComPort.MouseEnter += new System.EventHandler(this.buttonPort_MouseEnter);
+            this.labelComPort.MouseLeave += new System.EventHandler(this.buttonPort_MouseLeave);
             // 
             // label5
             // 
@@ -407,18 +364,6 @@ namespace LightRays
             this.label5.Size = new System.Drawing.Size(108, 20);
             this.label5.TabIndex = 8;
             this.label5.Text = "Port auswählen";
-            // 
-            // dropdownPort
-            // 
-            this.dropdownPort.Image = global::LightRays.Properties.Resources.background_dropdown_port;
-            this.dropdownPort.Location = new System.Drawing.Point(22, 121);
-            this.dropdownPort.Name = "dropdownPort";
-            this.dropdownPort.Size = new System.Drawing.Size(75, 32);
-            this.dropdownPort.TabIndex = 0;
-            this.dropdownPort.TabStop = false;
-            this.dropdownPort.Click += new System.EventHandler(this.buttonPort_Click);
-            this.dropdownPort.MouseEnter += new System.EventHandler(this.buttonPort_MouseEnter);
-            this.dropdownPort.MouseLeave += new System.EventHandler(this.buttonPort_MouseLeave);
             // 
             // label2
             // 
@@ -435,7 +380,7 @@ namespace LightRays
             // notifyIcon
             // 
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = "notifyIcon";
+            this.notifyIcon.Text = "Rear Light";
             this.notifyIcon.Visible = true;
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
@@ -449,6 +394,97 @@ namespace LightRays
             this.panel4.Size = new System.Drawing.Size(579, 29);
             this.panel4.TabIndex = 9;
             this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            // 
+            // panelRight
+            // 
+            this.panelRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.panelRight.Controls.Add(this.panelStartseite);
+            this.panelRight.Controls.Add(this.panel1);
+            this.panelRight.Location = new System.Drawing.Point(1, 1);
+            this.panelRight.Name = "panelRight";
+            this.panelRight.Size = new System.Drawing.Size(320, 578);
+            this.panelRight.TabIndex = 10;
+            this.panelRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            // 
+            // labelSelectColor
+            // 
+            this.labelSelectColor.AutoSize = true;
+            this.labelSelectColor.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.labelSelectColor.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelSelectColor.Location = new System.Drawing.Point(19, 351);
+            this.labelSelectColor.Margin = new System.Windows.Forms.Padding(0, 5, 0, 25);
+            this.labelSelectColor.Name = "labelSelectColor";
+            this.labelSelectColor.Size = new System.Drawing.Size(118, 20);
+            this.labelSelectColor.TabIndex = 18;
+            this.labelSelectColor.Text = "Farbe auswählen";
+            this.labelSelectColor.Visible = false;
+            // 
+            // labelGithub
+            // 
+            this.labelGithub.AutoSize = true;
+            this.labelGithub.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelGithub.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.labelGithub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.labelGithub.Location = new System.Drawing.Point(425, 59);
+            this.labelGithub.Margin = new System.Windows.Forms.Padding(0, 5, 0, 25);
+            this.labelGithub.Name = "labelGithub";
+            this.labelGithub.Size = new System.Drawing.Size(56, 20);
+            this.labelGithub.TabIndex = 19;
+            this.labelGithub.Text = "GitHub";
+            this.labelGithub.Click += new System.EventHandler(this.labelGithub_Click);
+            this.labelGithub.MouseEnter += new System.EventHandler(this.labelGithub_MouseEnter);
+            this.labelGithub.MouseLeave += new System.EventHandler(this.labelGithub_MouseLeave);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.icon_back);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(332, 29);
+            this.panel1.TabIndex = 10;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label1.Location = new System.Drawing.Point(57, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 15);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "LED-Einstellungen";
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            // 
+            // panelStartseite
+            // 
+            this.panelStartseite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.panelStartseite.BackgroundImage = global::LightRays.Properties.Resources.button_startseite;
+            this.panelStartseite.Location = new System.Drawing.Point(0, 50);
+            this.panelStartseite.Name = "panelStartseite";
+            this.panelStartseite.Size = new System.Drawing.Size(320, 48);
+            this.panelStartseite.TabIndex = 8;
+            this.panelStartseite.MouseEnter += new System.EventHandler(this.panelStartseite_MouseEnter);
+            this.panelStartseite.MouseLeave += new System.EventHandler(this.panelStartseite_MouseLeave);
+            // 
+            // icon_back
+            // 
+            this.icon_back.BackColor = System.Drawing.Color.Transparent;
+            this.icon_back.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.icon_back.Dock = System.Windows.Forms.DockStyle.Left;
+            this.icon_back.Image = global::LightRays.Properties.Resources.icon_back;
+            this.icon_back.Location = new System.Drawing.Point(0, 0);
+            this.icon_back.Margin = new System.Windows.Forms.Padding(0);
+            this.icon_back.Name = "icon_back";
+            this.icon_back.Size = new System.Drawing.Size(45, 29);
+            this.icon_back.TabIndex = 7;
+            this.icon_back.TabStop = false;
+            this.icon_back.Click += new System.EventHandler(this.icon_back_Click);
+            this.icon_back.MouseEnter += new System.EventHandler(this.icon_back_MouseEnter);
+            this.icon_back.MouseLeave += new System.EventHandler(this.icon_back_MouseLeave);
             // 
             // icon_hide
             // 
@@ -482,14 +518,41 @@ namespace LightRays
             this.icon_exit.MouseEnter += new System.EventHandler(this.icon_exit_MouseEnter);
             this.icon_exit.MouseLeave += new System.EventHandler(this.icon_exit_MouseLeave);
             // 
-            // panelRight
+            // dropdownZone
             // 
-            this.panelRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.panelRight.Location = new System.Drawing.Point(1, 1);
-            this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(320, 578);
-            this.panelRight.TabIndex = 10;
-            this.panelRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.dropdownZone.Image = global::LightRays.Properties.Resources.background_dropdown;
+            this.dropdownZone.Location = new System.Drawing.Point(22, 289);
+            this.dropdownZone.Name = "dropdownZone";
+            this.dropdownZone.Size = new System.Drawing.Size(160, 32);
+            this.dropdownZone.TabIndex = 14;
+            this.dropdownZone.TabStop = false;
+            this.dropdownZone.Click += new System.EventHandler(this.dropdownZone_Click);
+            this.dropdownZone.MouseEnter += new System.EventHandler(this.dropdownZone_MouseEnter);
+            this.dropdownZone.MouseLeave += new System.EventHandler(this.dropdownZone_MouseLeave);
+            // 
+            // dropdownEffekt
+            // 
+            this.dropdownEffekt.Image = global::LightRays.Properties.Resources.background_dropdown;
+            this.dropdownEffekt.Location = new System.Drawing.Point(22, 205);
+            this.dropdownEffekt.Name = "dropdownEffekt";
+            this.dropdownEffekt.Size = new System.Drawing.Size(160, 32);
+            this.dropdownEffekt.TabIndex = 1;
+            this.dropdownEffekt.TabStop = false;
+            this.dropdownEffekt.Click += new System.EventHandler(this.dropdownEffekt_Click);
+            this.dropdownEffekt.MouseEnter += new System.EventHandler(this.dropdownEffekt_MouseEnter);
+            this.dropdownEffekt.MouseLeave += new System.EventHandler(this.dropdownEffekt_MouseLeave);
+            // 
+            // dropdownPort
+            // 
+            this.dropdownPort.Image = global::LightRays.Properties.Resources.background_dropdown;
+            this.dropdownPort.Location = new System.Drawing.Point(22, 121);
+            this.dropdownPort.Name = "dropdownPort";
+            this.dropdownPort.Size = new System.Drawing.Size(160, 32);
+            this.dropdownPort.TabIndex = 0;
+            this.dropdownPort.TabStop = false;
+            this.dropdownPort.Click += new System.EventHandler(this.buttonPort_Click);
+            this.dropdownPort.MouseEnter += new System.EventHandler(this.buttonPort_MouseEnter);
+            this.dropdownPort.MouseLeave += new System.EventHandler(this.buttonPort_MouseLeave);
             // 
             // Form1
             // 
@@ -514,14 +577,18 @@ namespace LightRays
             this.color6.ResumeLayout(false);
             this.color5.ResumeLayout(false);
             this.color4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dropdownZone)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dropdownEffekt)).EndInit();
             this.btnApply.ResumeLayout(false);
             this.btnApply.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dropdownPort)).EndInit();
             this.panel4.ResumeLayout(false);
+            this.panelRight.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icon_back)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_hide)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_exit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dropdownZone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dropdownEffekt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dropdownPort)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -537,17 +604,14 @@ namespace LightRays
         private System.Windows.Forms.Panel panelPort;
         private System.Windows.Forms.PictureBox dropdownPort;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labelEffekt;
         private System.Windows.Forms.Label labelComPort;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panelEffekt;
         private System.Windows.Forms.PictureBox dropdownEffekt;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel btnApply;
         private System.Windows.Forms.Label btnApplyLabel;
         private System.Windows.Forms.Label labelZone;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox dropdownZone;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panelZone;
@@ -564,6 +628,12 @@ namespace LightRays
         private System.Windows.Forms.Panel color3;
         private System.Windows.Forms.Panel color2;
         private System.Windows.Forms.Panel color1;
+        private System.Windows.Forms.Label labelSelectColor;
+        private System.Windows.Forms.Label labelGithub;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox icon_back;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panelStartseite;
     }
 }
 
