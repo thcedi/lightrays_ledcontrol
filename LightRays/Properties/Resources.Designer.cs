@@ -83,6 +83,16 @@ namespace LightRays.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap background_dropdown_selected {
+            get {
+                object obj = ResourceManager.GetObject("background_dropdown_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_icon {
             get {
                 object obj = ResourceManager.GetObject("close_icon", resourceCulture);

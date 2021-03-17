@@ -45,22 +45,41 @@ namespace LightRays
         {
             InitializeComponent();
 
-            var newItem = new Panel() { Location = new Point(2, 6), Width = 78, Height = 30, BackColor = Color.FromArgb(0, 38, 66) };
+            //var newItem = new Panel() { Location = new Point(2, 6), Width = 78, Height = 30, BackColor = Color.FromArgb(0, 38, 66) };
 
-            var newItemLabel = new Label() { Text = "COM3", Location = new Point(2, 4), Font = new Font("Segoe UI", 12, FontStyle.Regular), ForeColor = Color.WhiteSmoke };
-            newItemLabel.MouseEnter += panelPort_MouseEnter;
-            newItemLabel.MouseLeave += panelPort_MouseLeave;
+            //var newItemLabel = new Label() { Text = "COM3", Location = new Point(2, 4), Font = new Font("Segoe UI", 12, FontStyle.Regular), ForeColor = Color.WhiteSmoke };
+            //newItemLabel.MouseEnter += panelPort_MouseEnter;
+            //newItemLabel.MouseLeave += panelPort_MouseLeave;
 
-            newItem.Controls.Add(newItemLabel);
-            newItem.MouseEnter += panelPort_MouseEnter;
-            newItem.MouseLeave += panelPort_MouseLeave;
+            //newItem.Controls.Add(newItemLabel);
+            //newItem.MouseEnter += panelPort_MouseEnter;
+            //newItem.MouseLeave += panelPort_MouseLeave;
 
-            panelPort.Controls.Add(newItem);
+            //panelPort.Controls.Add(newItem);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-         //   comboBoxPorts.Items.AddRange(SerialPort.GetPortNames()); 
+            var ports = SerialPort.GetPortNames();
+
+            panelPort.Height = ports.Count() * 30 + 12;
+
+            for (int i = 0; i < ports.Count(); i++)
+            {
+                var newItem = new Panel() { Location = new Point(2, 6 + (i * 30)), Width = 78, Height = 30, BackColor = Color.FromArgb(0, 38, 66) };
+
+                var newItemLabel = new Label() { Text = ports[i], Location = new Point(2, 4), Font = new Font("Segoe UI", 12, FontStyle.Regular), ForeColor = Color.WhiteSmoke };
+                newItemLabel.MouseEnter += panelPort_MouseEnter;
+                newItemLabel.MouseLeave += panelPort_MouseLeave;
+                newItemLabel.Click += selectPort_Click;
+
+                newItem.Controls.Add(newItemLabel);
+                newItem.MouseEnter += panelPort_MouseEnter;
+                newItem.MouseLeave += panelPort_MouseLeave;
+                newItem.Click += selectPort_Click;
+
+                panelPort.Controls.Add(newItem);
+            }
         }
 
         private void comboBoxPorts_SelectedIndexChanged(object sender, EventArgs e)
@@ -222,7 +241,9 @@ namespace LightRays
         {
             if(sender.GetType() == typeof(Panel))
             {
-                ((Panel)sender).BackColor = Color.FromArgb(0, 38, 66);
+                var panel = (Panel)sender;
+                panel.Controls[0].BackColor = Color.FromArgb(0, 38, 66);
+                panel.BackColor = Color.FromArgb(0, 38, 66);
 
             }
             else if(sender.GetType() == typeof(Label))
@@ -238,8 +259,9 @@ namespace LightRays
         {
             if (sender.GetType() == typeof(Panel))
             {
-                ((Panel)sender).BackColor = Color.FromArgb(0, 66, 117);
-
+                var panel = (Panel)sender;
+                panel.Controls[0].BackColor = Color.FromArgb(0, 66, 117);
+                panel.BackColor = Color.FromArgb(0, 66, 117);
             }
             else if (sender.GetType() == typeof(Label))
             {
@@ -248,6 +270,37 @@ namespace LightRays
                 container.BackColor = Color.FromArgb(0, 66, 117);
                 label.BackColor = Color.FromArgb(0, 66, 117);
             }
+        }
+
+        private void buttonPort_MouseEnter(object sender, EventArgs e)
+        {
+            buttonPort.Image = Properties.Resources.background_dropdown_selected;
+        }
+
+        private void buttonPort_MouseLeave(object sender, EventArgs e)
+        {
+            buttonPort.Image = Properties.Resources.background_dropdown_port;
+        }
+
+        private void buttonPort_Click(object sender, EventArgs e)
+        {
+            panelPort.Visible = true;
+        }
+
+        private void selectPort_Click(object sender, EventArgs e)
+        {
+            if (sender.GetType() == typeof(Panel))
+            {
+                var panel = (Panel)sender;
+                Port = panel.Controls[0].Text;
+            }
+            else if (sender.GetType() == typeof(Label))
+            {
+                var label = (Label)sender;
+                Port = label.Text;
+            }
+
+            panelPort.Visible = false;
         }
     }
 }

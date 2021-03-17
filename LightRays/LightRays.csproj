@@ -82,6 +82,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\background_dropdown_selected.jpg" />
     <None Include="Resources\background_dropdown_open.jpg" />
     <None Include="Resources\background_dropdown_port.jpg" />
     <Content Include="Resources\close_icon.jpg" />

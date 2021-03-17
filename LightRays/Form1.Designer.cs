@@ -51,6 +51,8 @@ namespace LightRays
             this.panelPort = new System.Windows.Forms.Panel();
             this.icon_hide = new System.Windows.Forms.PictureBox();
             this.icon_exit = new System.Windows.Forms.PictureBox();
+            this.buttonPort = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -60,6 +62,7 @@ namespace LightRays
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon_hide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_exit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonPort)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -77,6 +80,8 @@ namespace LightRays
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.Controls.Add(this.panelPort);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.buttonPort);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panel5);
@@ -90,7 +95,7 @@ namespace LightRays
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label2.Location = new System.Drawing.Point(16, 29);
+            this.label2.Location = new System.Drawing.Point(15, 27);
             this.label2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(136, 37);
@@ -105,7 +110,7 @@ namespace LightRays
             this.panel3.Controls.Add(this.comboBoxZone);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.comboBoxEffect);
-            this.panel3.Location = new System.Drawing.Point(56, 172);
+            this.panel3.Location = new System.Drawing.Point(22, 252);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(418, 57);
             this.panel3.TabIndex = 5;
@@ -184,7 +189,7 @@ namespace LightRays
             this.panel5.Controls.Add(this.label1);
             this.panel5.Controls.Add(this.trackBar2);
             this.panel5.Controls.Add(this.trackBar3);
-            this.panel5.Location = new System.Drawing.Point(56, 235);
+            this.panel5.Location = new System.Drawing.Point(22, 333);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(418, 138);
             this.panel5.TabIndex = 5;
@@ -257,10 +262,11 @@ namespace LightRays
             // panelPort
             // 
             this.panelPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.panelPort.Location = new System.Drawing.Point(26, 82);
+            this.panelPort.Location = new System.Drawing.Point(22, 121);
             this.panelPort.Name = "panelPort";
             this.panelPort.Size = new System.Drawing.Size(82, 42);
             this.panelPort.TabIndex = 7;
+            this.panelPort.Visible = false;
             // 
             // icon_hide
             // 
@@ -294,6 +300,30 @@ namespace LightRays
             this.icon_exit.MouseEnter += new System.EventHandler(this.icon_exit_MouseEnter);
             this.icon_exit.MouseLeave += new System.EventHandler(this.icon_exit_MouseLeave);
             // 
+            // buttonPort
+            // 
+            this.buttonPort.Image = global::LightRays.Properties.Resources.background_dropdown_port;
+            this.buttonPort.Location = new System.Drawing.Point(22, 121);
+            this.buttonPort.Name = "buttonPort";
+            this.buttonPort.Size = new System.Drawing.Size(75, 32);
+            this.buttonPort.TabIndex = 0;
+            this.buttonPort.TabStop = false;
+            this.buttonPort.Click += new System.EventHandler(this.buttonPort_Click);
+            this.buttonPort.MouseEnter += new System.EventHandler(this.buttonPort_MouseEnter);
+            this.buttonPort.MouseLeave += new System.EventHandler(this.buttonPort_MouseLeave);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.label5.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label5.Location = new System.Drawing.Point(19, 94);
+            this.label5.Margin = new System.Windows.Forms.Padding(0, 5, 0, 25);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(108, 20);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Port auswählen";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,6 +352,7 @@ namespace LightRays
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.icon_hide)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_exit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonPort)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -347,6 +378,8 @@ namespace LightRays
         private System.Windows.Forms.Panel panelRight;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelPort;
+        private System.Windows.Forms.PictureBox buttonPort;
+        private System.Windows.Forms.Label label5;
     }
 }
 
