@@ -82,6 +82,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\background_dropdown_zonet.jpg" />
+    <None Include="Resources\background_dropdown_zone_selected.jpg" />
+    <None Include="Resources\background_dropdown_effekt_selected.jpg" />
+    <None Include="Resources\background_dropdown_effekt.jpg" />
     <None Include="Resources\background_dropdown_selected.jpg" />
     <None Include="Resources\background_dropdown_open.jpg" />
     <None Include="Resources\background_dropdown_port.jpg" />

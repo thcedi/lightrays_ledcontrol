@@ -63,6 +63,26 @@ namespace LightRays.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap background_dropdown_effekt {
+            get {
+                object obj = ResourceManager.GetObject("background_dropdown_effekt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap background_dropdown_effekt_selected {
+            get {
+                object obj = ResourceManager.GetObject("background_dropdown_effekt_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap background_dropdown_open {
             get {
                 object obj = ResourceManager.GetObject("background_dropdown_open", resourceCulture);
@@ -86,6 +106,26 @@ namespace LightRays.Properties {
         internal static System.Drawing.Bitmap background_dropdown_selected {
             get {
                 object obj = ResourceManager.GetObject("background_dropdown_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap background_dropdown_zone_selected {
+            get {
+                object obj = ResourceManager.GetObject("background_dropdown_zone_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap background_dropdown_zonet {
+            get {
+                object obj = ResourceManager.GetObject("background_dropdown_zonet", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
