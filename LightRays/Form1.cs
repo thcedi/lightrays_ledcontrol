@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace LightRays
 {
@@ -227,8 +230,90 @@ namespace LightRays
 
         #region PORT_AND_EFFECTS
 
-        private void Form1_Load(object sender, EventArgs e)
+        private string _settingsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "settings.xml");
+
+        private async void Form1_Load(object sender, EventArgs e)
         {
+            // Get last settings
+            if(!File.Exists(_settingsPath))
+            {
+                var white = "255,255,255";
+
+                new XDocument(
+                        new XElement("settings",
+                            new XElement("lasteffect", "0;a;"),
+                            new XElement("comport", "COM3"),
+                            new XElement("color1", white),
+                            new XElement("color2", white),
+                            new XElement("color3", white),
+                            new XElement("color4", white),
+                            new XElement("color5", white),
+                            new XElement("color6", white),
+                            new XElement("color7", white)
+                            )
+                        )
+                    .Save(_settingsPath);
+            }
+            else
+            {
+                var doc = XElement.Load(_settingsPath);
+                var lastEffectXml = doc.Elements("lasteffect").Single().Value.ToString();
+                var lastEffect = lastEffectXml.Split(';');
+                labelComPort.Text = Port = doc.Elements("comport").Single().Value.ToString();
+                Zone = lastEffect[0];
+                switch (Zone)
+                {
+                    case "0":
+                        labelZone.Text = "Sync";
+                        break;
+                    case "1":
+                        labelZone.Text = "Zone 1";
+                        break;
+                    case "2":
+                        labelZone.Text = "Zone 2";
+                        break;
+                    case "3":
+                        labelZone.Text = "Zone 3";
+                        break;
+                }
+
+                Effect = lastEffect[1];
+                switch (Effect)
+                {
+                    case "a":
+                        labelEffekt.Text = "Rainbow";
+                        break;
+                    case "b":
+                        labelEffekt.Text = "Fade";
+                        break;
+                    case "c":
+                        labelEffekt.Text = "Fire";
+                        break;
+                    case "d":
+                        labelEffekt.Text = "Comet";
+                        break;
+                    default:
+                        if (Zone.Contains(","))
+                        {
+                            panelSingleColor.Visible = labelSelectColor.Visible = true;
+                            labelEffekt.Text = "Single color";
+                        }
+                        break;
+                }
+
+                color1.BackColor = Color.FromArgb(Convert.ToInt32(doc.Elements("color1").Single().Value.ToString().Split(',')[0]), Convert.ToInt32(doc.Elements("color1").Single().Value.ToString().Split(',')[1]), Convert.ToInt32(doc.Elements("color1").Single().Value.ToString().Split(',')[2]));
+                color2.BackColor = Color.FromArgb(Convert.ToInt32(doc.Elements("color2").Single().Value.ToString().Split(',')[0]), Convert.ToInt32(doc.Elements("color2").Single().Value.ToString().Split(',')[1]), Convert.ToInt32(doc.Elements("color2").Single().Value.ToString().Split(',')[2]));
+                color3.BackColor = Color.FromArgb(Convert.ToInt32(doc.Elements("color3").Single().Value.ToString().Split(',')[0]), Convert.ToInt32(doc.Elements("color3").Single().Value.ToString().Split(',')[1]), Convert.ToInt32(doc.Elements("color3").Single().Value.ToString().Split(',')[2]));
+                color4.BackColor = Color.FromArgb(Convert.ToInt32(doc.Elements("color4").Single().Value.ToString().Split(',')[0]), Convert.ToInt32(doc.Elements("color4").Single().Value.ToString().Split(',')[1]), Convert.ToInt32(doc.Elements("color4").Single().Value.ToString().Split(',')[2]));
+                color5.BackColor = Color.FromArgb(Convert.ToInt32(doc.Elements("color5").Single().Value.ToString().Split(',')[0]), Convert.ToInt32(doc.Elements("color5").Single().Value.ToString().Split(',')[1]), Convert.ToInt32(doc.Elements("color5").Single().Value.ToString().Split(',')[2]));
+                color6.BackColor = Color.FromArgb(Convert.ToInt32(doc.Elements("color6").Single().Value.ToString().Split(',')[0]), Convert.ToInt32(doc.Elements("color6").Single().Value.ToString().Split(',')[1]), Convert.ToInt32(doc.Elements("color6").Single().Value.ToString().Split(',')[2]));
+                color7.BackColor = Color.FromArgb(Convert.ToInt32(doc.Elements("color7").Single().Value.ToString().Split(',')[0]), Convert.ToInt32(doc.Elements("color7").Single().Value.ToString().Split(',')[1]), Convert.ToInt32(doc.Elements("color7").Single().Value.ToString().Split(',')[2]));
+
+                _serialHelper = new SerialHelper(Port);
+
+                await Apply();
+            }
+
             // Get ports
             var ports = SerialPort.GetPortNames();
             panelPort.Height = ports.Count() * 30 + 12;
@@ -322,6 +407,11 @@ namespace LightRays
             if (!string.IsNullOrEmpty(Port))
             {
                 _serialHelper = new SerialHelper(Port);
+
+                var doc = XElement.Load(_settingsPath);
+                var portElement = doc.Elements("comport").Single();
+                portElement.Value = Port;
+                doc.Save(_settingsPath);
             }
         }
 
@@ -402,6 +492,17 @@ namespace LightRays
 
         private async void btnApply_Click(object sender, EventArgs e)
         {
+            await Apply();
+
+            var currentEffect = string.Format("{0};{1};", Zone, Effect);
+            var doc = XElement.Load(_settingsPath);
+            var lastEffect = doc.Elements("lasteffect").Single();
+            lastEffect.Value = currentEffect;
+            doc.Save(_settingsPath);
+        }
+
+        private async Task Apply()
+        {
             if (string.IsNullOrEmpty(Zone) || string.IsNullOrEmpty(Effect) || string.IsNullOrEmpty(Port)) return;
 
             if (Zone == "Sync" && Effect.Contains(','))
@@ -425,13 +526,22 @@ namespace LightRays
 
         private void color_Click(object sender, EventArgs e)
         {
-            
+            selectColor((Panel)sender, ((Panel)sender).BackColor);
         }
 
         private void color1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (colorDialog1.ShowDialog() == DialogResult.OK) 
-                selectColor((Panel)sender, colorDialog1.Color);
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                var panel = (Panel)sender;
+                var color = colorDialog1.Color;
+                selectColor(panel, color);
+
+                var doc = XElement.Load(_settingsPath);
+                var lastEffectXml = doc.Elements(panel.Name).Single();
+                lastEffectXml.Value = string.Format("{0},{1},{2}", color.R, color.G, color.B);
+                doc.Save(_settingsPath);
+            }
         }
 
         private void selectColor(Panel panel, Color color)

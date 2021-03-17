@@ -138,6 +138,7 @@ namespace LightRays
             this.color7.Name = "color7";
             this.color7.Size = new System.Drawing.Size(44, 44);
             this.color7.TabIndex = 7;
+            this.color7.Click += new System.EventHandler(this.color_Click);
             this.color7.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseDoubleClick);
             // 
             // panel13
@@ -156,6 +157,7 @@ namespace LightRays
             this.color6.Name = "color6";
             this.color6.Size = new System.Drawing.Size(44, 44);
             this.color6.TabIndex = 6;
+            this.color6.Click += new System.EventHandler(this.color_Click);
             this.color6.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseDoubleClick);
             // 
             // panel11
@@ -174,6 +176,7 @@ namespace LightRays
             this.color5.Name = "color5";
             this.color5.Size = new System.Drawing.Size(44, 44);
             this.color5.TabIndex = 5;
+            this.color5.Click += new System.EventHandler(this.color_Click);
             this.color5.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseDoubleClick);
             // 
             // panel9
@@ -192,6 +195,7 @@ namespace LightRays
             this.color4.Name = "color4";
             this.color4.Size = new System.Drawing.Size(44, 44);
             this.color4.TabIndex = 3;
+            this.color4.Click += new System.EventHandler(this.color_Click);
             this.color4.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseDoubleClick);
             // 
             // panel7
@@ -209,6 +213,7 @@ namespace LightRays
             this.color3.Name = "color3";
             this.color3.Size = new System.Drawing.Size(44, 44);
             this.color3.TabIndex = 2;
+            this.color3.Click += new System.EventHandler(this.color_Click);
             this.color3.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseDoubleClick);
             // 
             // color2
@@ -218,6 +223,7 @@ namespace LightRays
             this.color2.Name = "color2";
             this.color2.Size = new System.Drawing.Size(44, 44);
             this.color2.TabIndex = 1;
+            this.color2.Click += new System.EventHandler(this.color_Click);
             this.color2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseDoubleClick);
             // 
             // color1
@@ -227,6 +233,7 @@ namespace LightRays
             this.color1.Name = "color1";
             this.color1.Size = new System.Drawing.Size(44, 44);
             this.color1.TabIndex = 0;
+            this.color1.Click += new System.EventHandler(this.color_Click);
             this.color1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.color1_MouseDoubleClick);
             // 
             // panelPort
