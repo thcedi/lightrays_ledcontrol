@@ -292,6 +292,9 @@ namespace LightRays
                     case "d":
                         labelEffekt.Text = "Comet";
                         break;
+                    case "e":
+                        labelEffekt.Text = "Huewheel";
+                        break;
                     default:
                         if (Zone.Contains(","))
                         {
@@ -335,7 +338,7 @@ namespace LightRays
             }
 
             // Get effects
-            var effects = new List<string>() { "Single color", "Rainbow", "Fade", "Fire", "Comet" };
+            var effects = new List<string>() { "Single color", "Rainbow", "Fade", "Fire", "Comet", "Huewheel" };
             panelEffekt.Height = effects.Count() * 30 + 12;
             for (int i = 0; i < effects.Count(); i++)
             {
@@ -445,6 +448,9 @@ namespace LightRays
                     break;
                 case "Comet":
                     Effect = "d";
+                    break;
+                case "Huewheel":
+                    Effect = "e";
                     break;
                 case "Single color":
                     panelSingleColor.Visible = labelSelectColor.Visible = true;

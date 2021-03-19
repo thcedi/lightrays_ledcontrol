@@ -5,11 +5,13 @@
  *  Char - Effect Mappings:
  *  a   -   rainbow
  *  b   -   rainbow fade
- *  c   -   simple color change
+ *  c   -   fire
  *  d   -   comet
- *  e   -   
+ *  e   -   huewheel
  *  f   -   
  *  g   -   
+ *  ...
+ *  x   -   off
  */
 
 Adafruit_NeoPixel strip1(20, 2, NEO_GRB + NEO_KHZ800);
@@ -67,6 +69,12 @@ void updateEffect()
       case 'd':
         comet((0xff,0xff,0xff),10, 64, true, 30);
         break;
+      case 'e':
+        simpleColorChange();
+        break;
+      case 'x':
+        // off
+        break;
     }
   }
 }
@@ -104,6 +112,11 @@ void updateState()
       // Sync effect
       syncMode = true;
       syncModeEffect = effect[0];
+
+      if(effect[0] == 'x')
+      {
+        fillAllPixels(strip1.Color(0, 0, 0));
+      }
     }
     else
     {
@@ -149,6 +162,18 @@ void sync_Rainbow(int wait, int effectWidth)
   }
 
   delay(wait);
+}
+
+int lastHueSimpleColorChange;
+void simpleColorChange()
+{
+  if(lastHueSimpleColorChange >= 65536) lastHueSimpleColorChange = 0;
+
+  fillAllPixels(strip1.ColorHSV(lastHueSimpleColorChange));
+  strip1.show();
+  strip2.show();
+  strip3.show();
+  lastHueSimpleColorChange += 5;
 }
 
 void fire()
