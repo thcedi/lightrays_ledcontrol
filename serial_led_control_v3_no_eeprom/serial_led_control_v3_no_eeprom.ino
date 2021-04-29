@@ -55,36 +55,53 @@ void loop()
 }
 
 void handleStrip(int stripId)
-{ 
-  if(strip1Effect.indexOf(',') != -1)
-  {
-    Serial.println("single color");
-    //If effect contains ',' -> single Color
-    //int r = getValue(effect, ',', 0).toInt();
-    //int g = getValue(effect, ',', 1).toInt();
-    //int b = getValue(effect, ',', 2).toInt();
-  }
-  else
-  {
-    // Serial.print("animated effect: "); Serial.println(stripEffect[0]);
-    // Animated effect
+{  
+  char selectedEffect;
+  bool singleColor;
 
-    char selectedEffect;
-    switch(stripId)
-    {
-      case 1:
-        selectedEffect = strip1Effect[0];
-        updateEffect(1, selectedEffect);
-        break;   
-      case 2:
-        selectedEffect = strip2Effect[0];
-        updateEffect(2, selectedEffect);
-        break;
-      case 3:
-        selectedEffect = strip3Effect[0];
-        updateEffect(3, selectedEffect);
-        break;
-    }
+  switch(stripId)
+  {
+    case 1:
+      selectedEffect = strip1Effect[0];
+      singleColor = strip1Effect.indexOf(',') != -1;
+      if(singleColor)
+      {    
+         strip1.fill(strip1.Color(getValue(strip1Effect, ',', 0).toInt(), 
+                                  getValue(strip1Effect, ',', 1).toInt(),
+                                  getValue(strip1Effect, ',', 2).toInt()),
+                                  0, strip1.numPixels()); 
+         strip1.show();
+      }
+      else { updateEffect(1, selectedEffect); }
+      break;   
+      
+    case 2:
+      selectedEffect = strip2Effect[0];
+      singleColor = strip2Effect.indexOf(',') != -1;
+      if(singleColor)
+      {    
+         strip2.fill(strip2.Color(getValue(strip2Effect, ',', 0).toInt(), 
+                                  getValue(strip2Effect, ',', 1).toInt(),
+                                  getValue(strip2Effect, ',', 2).toInt()),
+                                  0, strip2.numPixels()); 
+         strip2.show();
+      }
+      else { updateEffect(2, selectedEffect); }
+      break;
+      
+    case 3:
+      selectedEffect = strip3Effect[0];
+      singleColor = strip3Effect.indexOf(',') != -1;
+      if(singleColor)
+      {    
+         strip3.fill(strip3.Color(getValue(strip3Effect, ',', 0).toInt(), 
+                                  getValue(strip3Effect, ',', 1).toInt(),
+                                  getValue(strip3Effect, ',', 2).toInt()),
+                                  0, strip3.numPixels()); 
+         strip3.show();
+      }
+      else { updateEffect(3, selectedEffect); }
+      break;
   }
 }
 
