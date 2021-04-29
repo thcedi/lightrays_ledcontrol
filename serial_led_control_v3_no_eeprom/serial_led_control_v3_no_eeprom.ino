@@ -1,5 +1,4 @@
 #include <Adafruit_NeoPixel.h>
-#include <EEPROM.h>
 
 /* 
  *  Char - Effect Mappings:
@@ -21,6 +20,10 @@ Adafruit_NeoPixel strip3(20, 12, NEO_GRB + NEO_KHZ800);
 bool syncMode;
 char syncModeEffect;
 
+String strip1Effect = "";
+String strip2Effect = "";
+String strip3Effect = "";
+
 void setup() 
 {
   Serial.begin(9600);
@@ -33,41 +36,73 @@ void setup()
   strip2.show();
   strip3.show();
   
-  strip1.setBrightness(150); // Set BRIGHTNESS to about 1/5 (max = 255)
-  strip2.setBrightness(150);
-  strip3.setBrightness(150);
+  strip1.setBrightness(255); // Set BRIGHTNESS to about 1/5 (max = 255)
+  strip2.setBrightness(255);
+  strip3.setBrightness(255);
 }
 
 void loop() 
 {
   updateState();
-  updateEffect();
 
-  if(syncMode)
+  if(strip1Effect != "") handleStrip(1);
+  if(strip2Effect != "") handleStrip(2);
+  if(strip3Effect != "") handleStrip(3);
+
+  strip1.show();
+  strip2.show();
+  strip3.show();
+}
+
+void handleStrip(int stripId)
+{ 
+  if(strip1Effect.indexOf(',') != -1)
   {
-    strip1.show();
-    strip2.show();
-    strip3.show();  
+    Serial.println("single color");
+    //If effect contains ',' -> single Color
+    //int r = getValue(effect, ',', 0).toInt();
+    //int g = getValue(effect, ',', 1).toInt();
+    //int b = getValue(effect, ',', 2).toInt();
+  }
+  else
+  {
+    // Serial.print("animated effect: "); Serial.println(stripEffect[0]);
+    // Animated effect
+
+    char selectedEffect;
+    switch(stripId)
+    {
+      case 1:
+        selectedEffect = strip1Effect[0];
+        updateEffect(1, selectedEffect);
+        break;   
+      case 2:
+        selectedEffect = strip2Effect[0];
+        updateEffect(2, selectedEffect);
+        break;
+      case 3:
+        selectedEffect = strip3Effect[0];
+        updateEffect(3, selectedEffect);
+        break;
+    }
   }
 }
 
-void updateEffect()
+void updateEffect(int stripId, char effect)
 {
-  if(syncMode)
-  {
-    switch(syncModeEffect)
+    switch(effect)
     {
       case 'a':
-        sync_Rainbow(5, 20);
+        rainbow(stripId, 5, 25);
         break;
       case 'b':
-        sync_Rainbow(10, 100);
+        rainbow(stripId, 10, 100);
         break;
       case 'c':
-        fire();
+        //fire(strip, 10,25,35);
         break;
       case 'd':
-        comet((0xff,0xff,0xff),10, 64, true, 30);
+        //comet(strip, (0xff,0xff,0xff),10, 64, true, 30);
         break;
       case 'e':
         simpleColorChange();
@@ -76,7 +111,6 @@ void updateEffect()
         // off
         break;
     }
-  }
 }
 
 void updateState()
@@ -99,69 +133,73 @@ void updateState()
   {
     String input = Serial.readString();
 
-    String stripId = getValue(input, ';', 0);
-    Serial.print("Strip id: ");
-    Serial.println(stripId[0]);
-    
+    String stripId = getValue(input, ';', 0);    
     String effect = getValue(input, ';', 1);
-    Serial.print("effect: ");
-    Serial.println(effect);
 
     if(stripId.toInt() == 0)
     {
-      // Sync effect
-      syncMode = true;
-      syncModeEffect = effect[0];
+      // Sync
+      //syncMode = true;
+      //syncModeEffect = effect[0];
 
-      if(effect[0] == 'x')
-      {
-        fillAllPixels(strip1.Color(0, 0, 0));
-      }
+      //if(effect[0] == 'x')
+      //{
+      //  fillAllPixels(strip1.Color(0, 0, 0));
+      //}
     }
     else
     {
-      // Single color
-      syncMode = false;
-      
-      int r = getValue(effect, ',', 0).toInt();
-      int g = getValue(effect, ',', 1).toInt();
-      int b = getValue(effect, ',', 2).toInt();
+      // Single strip
+      //syncMode = false;
+      Serial.print("set strip "); Serial.print(stripId.toInt()); Serial.print(" effect to: "); Serial.println(effect);
       
       switch(stripId.toInt())
       {
         case 1:
-          setStripSingleColor(strip1, strip1.Color(r, g, b));
+          strip1Effect = effect;
           break;
         case 2:
-          setStripSingleColor(strip2, strip1.Color(r, g, b));
+          strip2Effect = effect;
           break;
         case 3:
-          setStripSingleColor(strip3, strip1.Color(r, g, b));
+          strip3Effect = effect;
           break;
       }
     }
   }
 }
 
-long sync_Rainbow_currentHue = 0;
-void sync_Rainbow(int wait, int effectWidth) 
+long rainbow_currentHue = 0;
+void rainbow(int stripId, int wait, int effectWidth) 
 {
-  if(sync_Rainbow_currentHue < 5*65536)
+  if(rainbow_currentHue < 5*65536)
   {
     for(int i=0; i<effectWidth; i++) 
     { 
-      int pixelHue = sync_Rainbow_currentHue + (i * 65536L / effectWidth);
-      setPixelColorSync(i, strip1.gamma32(strip1.ColorHSV(pixelHue)));
+      int pixelHue = rainbow_currentHue + (i * 65536L / effectWidth);
+      switch(stripId)
+      {
+        case 1:
+          strip1.setPixelColor(i, strip1.gamma32(strip1.ColorHSV(pixelHue)));
+          break;  
+        case 2:
+          strip2.setPixelColor(i, strip2.gamma32(strip2.ColorHSV(pixelHue)));
+          break;
+        case 3:
+          strip3.setPixelColor(i, strip3.gamma32(strip3.ColorHSV(pixelHue)));
+          break;
+      }
+      
     }
     
-    sync_Rainbow_currentHue += 256;
+    rainbow_currentHue += 256;
   }
   else
   {
-    sync_Rainbow_currentHue = 0;
+    rainbow_currentHue = 0;
   }
 
-  delay(wait);
+  //delay(1);
 }
 
 int lastHueSimpleColorChange;
@@ -170,38 +208,66 @@ void simpleColorChange()
   if(lastHueSimpleColorChange >= 65536) lastHueSimpleColorChange = 0;
 
   fillAllPixels(strip1.ColorHSV(lastHueSimpleColorChange));
-  strip1.show();
-  strip2.show();
-  strip3.show();
   lastHueSimpleColorChange += 5;
 }
 
-void fire()
+void fire(int Cooling, int Sparking, int SpeedDelay) 
 {
-  uint32_t baseColor = strip1.Color(  255,   0,   0);
-  uint32_t fireColor = strip1.Color(  250,   135,   0);
-  strip1.fill(baseColor, 0, strip1.numPixels());
-  strip2.fill(baseColor, 0, strip1.numPixels());
-  strip3.fill(baseColor, 0, strip1.numPixels());
+  int NUM_LEDS = 20;
+  static byte heat[20];
+  int cooldown;
+   
+  // Step 1.  Cool down every cell a little
+  for( int i = 0; i < NUM_LEDS; i++) {
+    cooldown = random(0, ((Cooling * 10) / NUM_LEDS) + 2);
+   
+    if(cooldown>heat[i]) {
+      heat[i]=0;
+    } else {
+      heat[i]=heat[i]-cooldown;
+    }
+  }
+ 
+  // Step 2.  Heat from each cell drifts 'up' and diffuses a little
+  for( int k= NUM_LEDS - 1; k >= 2; k--) {
+    heat[k] = (heat[k - 1] + heat[k - 2] + heat[k - 2]) / 3;
+  }
+   
+  // Step 3.  Randomly ignite new 'sparks' near the bottom
+  if( random(255) < Sparking ) {
+    int y = random(7);
+    heat[y] = heat[y] + random(160,255);
+    //heat[y] = random(160,255);
+  }
+
+  // Step 4.  Convert heat to LED colors
+  for( int j = 0; j < NUM_LEDS; j++) {
+    setPixelHeatColor(j, heat[j] );
+  }
+
   strip1.show();
   strip2.show();
   strip3.show();
-  delay(20);
-  
-  int firePixelCount = strip1.numPixels() / 3;
-  int firePixels[firePixelCount];
-  for(int i = 0; i < firePixelCount; i++)
-  {
-    int firePixel = random(0, strip1.numPixels());
-    strip1.setPixelColor(firePixel, fireColor);
-    strip2.setPixelColor(firePixel, fireColor);
-    strip3.setPixelColor(firePixel, fireColor);
-    strip1.show();
-    strip2.show();
-    strip3.show();
+  delay(SpeedDelay);
+}
+
+void setPixelHeatColor (int Pixel, byte temperature) 
+{
+  // Scale 'heat' down from 0-255 to 0-191
+  byte t192 = round((temperature/255.0)*191);
+ 
+  // calculate ramp up from
+  byte heatramp = t192 & 0x3F; // 0..63
+  heatramp <<= 2; // scale up to 0..252
+ 
+  // figure out which third of the spectrum we're in:
+  if( t192 > 0x80) {                     // hottest
+    setPixelColorSync(Pixel, strip1.Color(255, 255, heatramp));
+  } else if( t192 > 0x40 ) {             // middle
+    setPixelColorSync(Pixel, strip1.Color(255, heatramp, 0));
+  } else {                               // coolest
+    setPixelColorSync(Pixel, strip1.Color(heatramp, 0, 0));
   }
-  
-  delay(100);
 }
 
 void comet(uint32_t color, byte meteorSize, byte meteorTrailDecay, boolean meteorRandomDecay, int SpeedDelay)
@@ -247,10 +313,10 @@ void comet(uint32_t color, byte meteorSize, byte meteorTrailDecay, boolean meteo
   }
 }
 
-void setStripSingleColor(Adafruit_NeoPixel strip, uint32_t color)
+void setStripSingleColor(uint32_t color)
 {
-  strip.fill(color, 0, strip1.numPixels());
-  strip.show();
+  strip1.fill(color, 0, strip1.numPixels());
+  strip1.show();
 }
 
 void setPixelColorSync(int pixel, uint32_t color)
