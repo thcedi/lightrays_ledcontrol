@@ -20,6 +20,7 @@ Adafruit_NeoPixel strip3(20, 12, NEO_GRB + NEO_KHZ800);
 String strip1Effect = "";
 String strip2Effect = "";
 String strip3Effect = "";
+int effectDelay = 5;
 
 void setup() 
 {
@@ -49,6 +50,8 @@ void loop()
   strip1.show();
   strip2.show();
   strip3.show();
+
+  delay(effectDelay);
 }
 
 void handleStrip(int stripId)
@@ -132,13 +135,14 @@ void updateState()
   // input string aufbau -> stripId;effect;
   /* 
    * stripId: 
-   *  if 0: all sync  
+   *  if 0: sync mode  
    *  not 0: id of the strip
+   *  99: set effect delay
    *  
    * effect:
-   *  - effectId
-   *  
-   *  
+   *  - effectId or rgb color
+   *
+   * example:
    *  0;a;       - rainbow
    *  1;255,0,0; - strip 1 red
    */
@@ -157,6 +161,11 @@ void updateState()
       strip1Effect = effect;
       strip2Effect = effect;
       strip3Effect = effect;
+    }
+    else if(stripId.toInt() == 99)
+    {
+      Serial.print("set effect delay to: "); Serial.println(effect);
+      effectDelay = effect.toInt();
     }
     else
     {
