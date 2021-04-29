@@ -17,9 +17,6 @@ Adafruit_NeoPixel strip1(20, 2, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel strip2(20, 6, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel strip3(20, 12, NEO_GRB + NEO_KHZ800);
 
-bool syncMode;
-char syncModeEffect;
-
 String strip1Effect = "";
 String strip2Effect = "";
 String strip3Effect = "";
@@ -156,18 +153,14 @@ void updateState()
     if(stripId.toInt() == 0)
     {
       // Sync
-      //syncMode = true;
-      //syncModeEffect = effect[0];
-
-      //if(effect[0] == 'x')
-      //{
-      //  fillAllPixels(strip1.Color(0, 0, 0));
-      //}
+      Serial.print("sync all strips with effect: "); Serial.println(effect);
+      strip1Effect = effect;
+      strip2Effect = effect;
+      strip3Effect = effect;
     }
     else
     {
       // Single strip
-      //syncMode = false;
       Serial.print("set strip "); Serial.print(stripId.toInt()); Serial.print(" effect to: "); Serial.println(effect);
       
       switch(stripId.toInt())
