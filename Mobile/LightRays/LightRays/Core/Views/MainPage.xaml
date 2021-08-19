@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
+             xmlns:forms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:converters="clr-namespace:LightRays.Core.Converters"
+             mc:Ignorable="d"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:viewmodels="clr-namespace:LightRays.Core.ViewModels" x:DataType="viewmodels:MainPageViewModel"
+             Title="LightRays Mobile"
+             ios:Page.UseSafeArea="true"
+             x:Class="LightRays.Core.Views.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BoolToShowTriangleSwitchConverter x:Key="BoolToShowTriangleSwitchConverter"/>
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Margin="10" Spacing="10">
+        <Frame BackgroundColor="White" VerticalOptions="FillAndExpand">
+            <StackLayout>
+                <Label Text="Farbe" FontAttributes="Bold"/>
+                <forms:SKCanvasView PaintSurface="SKCanvasView_PaintSurface" IsVisible="false"/>
+                <colorpicker:ColorWheel x:Name="ColorWheel1"
+                                IsVisible="true"
+                                Padding="10"/>
+                <colorpicker:ColorTriangle x:Name="ColorTriangle1"
+                                   ConnectedColorPicker="{x:Reference Name=ColorWheel1}"
+                                   IsVisible="false"
+                                   Padding="10"/>
+            </StackLayout>
+        </Frame>
+        
+        <Frame BackgroundColor="White">
+            <StackLayout >
+                <Label Text="Effekt" FontAttributes="Bold"/>
+                <Picker SelectedItem="{Binding Effect}" ItemsSource="{Binding Effects}"/>
+                <Label Text="Zone" FontAttributes="Bold"/>
+                <Picker SelectedItem="{Binding Zone}" ItemsSource="{Binding Zones}"/>
+            </StackLayout>
+        </Frame>
+
+        <Button IsVisible="true"
+                        Text="Send request" 
+                        CornerRadius="10" 
+                        TextColor="WhiteSmoke"
+                        Command="{Binding SendRequestCommand}" 
+                        CommandParameter="{Binding Source={x:Reference ColorWheel1}}" 
+                        BackgroundColor="{Binding Source={x:Reference ColorWheel1}, Path=SelectedColor}" />
+        
+
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LightRays.Core.Views.SettingsPage"
+             Title="Einstellungen">
+
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Frame VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label Text="XXXX" FontAttributes="Bold"/>
+                    <Picker>
+                        <Picker.Items>
+                            <x:String>Kamera</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Label Text="Info" FontAttributes="Bold"/>
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="XXXXXXXXXXXXXXXX"/>
+                                <Span Text="XXXXXXXXXXXXXXXX"/>
+                                <Span Text="XXXXXXXXXXXXXXXX"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Button Text="XXX" VerticalOptions="EndAndExpand"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>
