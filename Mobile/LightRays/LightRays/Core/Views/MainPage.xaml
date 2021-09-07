@@ -6,6 +6,7 @@
              xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
              xmlns:forms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              xmlns:converters="clr-namespace:LightRays.Core.Converters"
+             xmlns:behaviors="clr-namespace:LightRays.Core.Behaviors"
              mc:Ignorable="d"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:viewmodels="clr-namespace:LightRays.Core.ViewModels" x:DataType="viewmodels:MainPageViewModel"
              Title="LightRays Mobile"
@@ -18,6 +19,14 @@
             <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="1,0">
+            <GradientStop Color="#272727"
+                  Offset="0.0" />
+            <GradientStop Color="#1b1b1b"
+                  Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
     <StackLayout Margin="10" Spacing="10">
         <Frame BackgroundColor="White" VerticalOptions="FillAndExpand">
             <StackLayout>
@@ -25,7 +34,11 @@
                 <forms:SKCanvasView PaintSurface="SKCanvasView_PaintSurface" IsVisible="false"/>
                 <colorpicker:ColorWheel x:Name="ColorWheel1"
                                 IsVisible="true"
-                                Padding="10"/>
+                                Padding="10">
+                    <colorpicker:ColorWheel.Behaviors>
+                        <behaviors:EventToCommandBehavior EventName="PropertyChanged" Command="{Binding ChangeToolbarCommand}" CommandParameter="{Binding Source={x:Reference ColorWheel1}}"/>
+                    </colorpicker:ColorWheel.Behaviors>
+                </colorpicker:ColorWheel>
                 <colorpicker:ColorTriangle x:Name="ColorTriangle1"
                                    ConnectedColorPicker="{x:Reference Name=ColorWheel1}"
                                    IsVisible="false"
@@ -33,7 +46,7 @@
             </StackLayout>
         </Frame>
         
-        <Frame BackgroundColor="White">
+        <Frame BackgroundColor="White" IsVisible="false">
             <StackLayout >
                 <Label Text="Effekt" FontAttributes="Bold"/>
                 <Picker SelectedItem="{Binding Effect}" ItemsSource="{Binding Effects}"/>

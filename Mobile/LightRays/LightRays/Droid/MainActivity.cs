@@ -4,13 +4,14 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
-using Android.Widget;
 using LightRays.Core;
 using Plugin.Permissions;
 using Prism;
 using Prism.Ioc;
-using System;
 using System.Threading.Tasks;
+//using Xamarin.Forms;
+using Android.Graphics.Drawables;
+using Xamarin.Forms.Platform.Android;
 
 namespace LightRays.Droid
 {
@@ -26,7 +27,7 @@ namespace LightRays.Droid
             base.OnCreate(savedInstanceState);
             await InitializePermissions();
 
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
@@ -37,6 +38,17 @@ namespace LightRays.Droid
             }
 
             LoadApplication(new App(new AndroidInitializer()));
+
+            Xamarin.Forms.MessagingCenter.Subscribe<object, object>(this, "ChangeToolbar", (sender, args) =>
+            {
+                LightRays.Core.ViewModels.MainPageViewModel.ToolbarColorManager model = args as LightRays.Core.ViewModels.MainPageViewModel.ToolbarColorManager;
+
+                var toolbar = MainActivity.RootFindViewById<AndroidX.AppCompat.Widget.Toolbar>(Resource.Id.toolbar);
+                if (toolbar == null) return;
+
+                toolbar.SetBackground(new GradientDrawable(GradientDrawable.Orientation.RightLeft,
+                    new int[] { model.LeftColor.ToAndroid(), model.RightColor.ToAndroid() }));
+            });
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -78,6 +90,18 @@ namespace LightRays.Droid
             {
                 containerRegistry.RegisterSingleton(typeof(Core.IPlatform), typeof(PlatformDroid));
             }
+        }
+
+        private static MainActivity instance;
+
+        public static View RootFindViewById<T>(int id) where T : View
+        {
+            return instance.FindViewById<T>(id);
+        }
+
+        public MainActivity()
+        {
+            instance = this;
         }
     }
 }

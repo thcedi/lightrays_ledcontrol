@@ -18,6 +18,7 @@ namespace LightRays.Core.ViewModels
         private string _zone;
         private List<string> _effects;
         private string _effect;
+        private string _selectedColor;
 
         private string _uri = "192.168.0.72";
 
@@ -27,19 +28,35 @@ namespace LightRays.Core.ViewModels
         public string Zone { get => _zone; set => SetProperty(ref _zone, value); }
         public List<string> Effects { get => _effects; set => SetProperty(ref _effects, value); }
         public string Effect { get => _effect; set => SetProperty(ref _effect, value); }
+        public string SelectedColor { get => _selectedColor; set => SetProperty(ref _selectedColor, value); }
 
         public ICommand SendRequestCommand => new Command<object>(SendRequest);
+        public DelegateCommand<object> ChangeToolbarCommand { get; set; }
+
 
         public MainPageViewModel(INavigationService navigationService, IRequestService requestService) : base(navigationService)
         {
             Zones = new List<string>() { "0", "1", "2", "3" };
-            Effects = new List<string>() {  "Single color", "1", "2" };
+            Effects = new List<string>() { "Single color", "1", "2" };
 
             _requestService = requestService;
+            ChangeToolbarCommand = new DelegateCommand<object>(ChangeToolbar);
+        }
+
+        private void ChangeToolbar(object e)
+        {
+            var colorHex = ((ColorWheel)e)?.SelectedColor.ToHex();
+
+            if (!string.IsNullOrEmpty(colorHex))
+            {
+                var colorModel = new ToolbarColorManager { LeftColor = Color.FromHex(colorHex), RightColor = Color.FromHex("#1E1E1E") };
+                MessagingCenter.Send<object, object>(this, "ChangeToolbar", colorModel);
+            }
         }
 
         private async void SendRequest(object e)
         {
+            var test = SelectedColor;
             if (string.IsNullOrEmpty(Zone) || string.IsNullOrEmpty(Effect)) return;
 
             if(Effect == "Single color")
@@ -74,6 +91,13 @@ namespace LightRays.Core.ViewModels
             blue = int.Parse(hexColor.Substring(4, 2), NumberStyles.AllowHexSpecifier);
 
             return new Tuple<int, int, int>(red, green, blue);
+        }
+
+        public class ToolbarColorManager
+        {
+            public Color LeftColor { set; get; }
+
+            public Color RightColor { set; get; }
         }
     }
 }

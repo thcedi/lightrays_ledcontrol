@@ -19,7 +19,7 @@ namespace LightRays.Core
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync($"MyMasterDetail/GradientHeaderNavigationPage/MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -28,6 +28,8 @@ namespace LightRays.Core
             containerRegistry.RegisterSingleton<IRequestService, RequestServiceWeb>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<MyMasterDetail>();
+            containerRegistry.RegisterForNavigation<GradientHeaderNavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
         }
     }
