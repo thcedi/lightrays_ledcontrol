@@ -32,9 +32,12 @@ namespace LightRays.Droid
 
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
             {
-                Window.ClearFlags(WindowManagerFlags.TranslucentStatus);
-                Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
-                Window.SetStatusBarColor(Android.Graphics.Color.Rgb(37, 37, 38));
+                //Window.ClearFlags(WindowManagerFlags.TranslucentStatus);
+                //Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
+                //Window.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
+                ////Window.SetStatusBarColor(Android.Graphics.Color.Transparent);
+
+
             }
 
             LoadApplication(new App(new AndroidInitializer()));
@@ -59,18 +62,18 @@ namespace LightRays.Droid
 
         private async Task InitializePermissions()
         {
-            var permissions = new Plugin.Permissions.Abstractions.Permission[] {
-                Plugin.Permissions.Abstractions.Permission.Storage
-            };
+            //var permissions = new Plugin.Permissions.Abstractions.Permission[] {
+            //    Plugin.Permissions.Abstractions.Permission.Storage
+            //};
 
-            bool allPermissionsGranted = await CheckPermissions(permissions);
-            if (!allPermissionsGranted)
-            {
-                var result = await CrossPermissions.Current.RequestPermissionsAsync(permissions);
+            //bool allPermissionsGranted = await CheckPermissions(permissions);
+            //if (!allPermissionsGranted)
+            //{
+            //    var result = await CrossPermissions.Current.RequestPermissionsAsync(permissions);
 
-                if (await CheckPermissions(permissions) == false)
-                    throw new System.Exception("LightRays can not continue without appropriate permissions! Goodbye.");
-            }
+            //    if (await CheckPermissions(permissions) == false)
+            //        throw new System.Exception("LightRays can not continue without appropriate permissions! Goodbye.");
+            //}
         }
 
         private async Task<bool> CheckPermissions(Plugin.Permissions.Abstractions.Permission[] permissions)

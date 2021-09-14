@@ -25,7 +25,7 @@ namespace LightRays.Core.ViewModels
             var container = ((Prism.PrismApplicationBase)Xamarin.Forms.Application.Current).Container;
             NavigationService = navigationService;
             DialogService = container.Resolve<IDialogService>();
-            Platform = container.Resolve<IPlatform>();
+            //Platform = container.Resolve<IPlatform>();
         }
 
         public virtual void OnNavigatedFrom(INavigationParameters parameters) { }
