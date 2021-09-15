@@ -28,41 +28,36 @@
         </LinearGradientBrush>
     </ContentPage.Background>
     <StackLayout Margin="10" Spacing="10">
-        <Frame BackgroundColor="White" VerticalOptions="FillAndExpand">
-            <StackLayout>
-                <Label Text="Farbe" FontAttributes="Bold"/>
-                <forms:SKCanvasView PaintSurface="SKCanvasView_PaintSurface" IsVisible="false"/>
-                <colorpicker:ColorWheel x:Name="ColorWheel1"
-                                IsVisible="true"
-                                Padding="10">
-                    <colorpicker:ColorWheel.Behaviors>
-                        <behaviors:EventToCommandBehavior EventName="PropertyChanged" Command="{Binding ChangeToolbarCommand}" CommandParameter="{Binding Source={x:Reference ColorWheel1}}"/>
-                    </colorpicker:ColorWheel.Behaviors>
-                </colorpicker:ColorWheel>
-                <colorpicker:ColorTriangle x:Name="ColorTriangle1"
-                                   ConnectedColorPicker="{x:Reference Name=ColorWheel1}"
-                                   IsVisible="false"
-                                   Padding="10"/>
-            </StackLayout>
-        </Frame>
-        
-        <Frame BackgroundColor="White" IsVisible="false">
-            <StackLayout >
-                <Label Text="Effekt" FontAttributes="Bold"/>
-                <Picker SelectedItem="{Binding Effect}" ItemsSource="{Binding Effects}"/>
-                <Label Text="Zone" FontAttributes="Bold"/>
-                <Picker SelectedItem="{Binding Zone}" ItemsSource="{Binding Zones}"/>
-            </StackLayout>
-        </Frame>
 
-        <Button IsVisible="true"
-                        Text="Send request" 
-                        CornerRadius="10" 
-                        TextColor="WhiteSmoke"
+        <StackLayout Orientation="Horizontal">
+            <Button HorizontalOptions="EndAndExpand" Text="💡" 
+                        Style="{StaticResource FABPrimary}"
                         Command="{Binding SendRequestCommand}" 
                         CommandParameter="{Binding Source={x:Reference ColorWheel1}}" 
                         BackgroundColor="{Binding Source={x:Reference ColorWheel1}, Path=SelectedColor}" />
+            <Button HorizontalOptions="End" Text="✈"
+                        Style="{StaticResource FABPrimary}"
+                        Command="{Binding SendRequestCommand}" 
+                        CommandParameter="{Binding Source={x:Reference ColorWheel1}}" 
+                        BackgroundColor="{Binding Source={x:Reference ColorWheel1}, Path=SelectedColor}" />
+        </StackLayout>
         
+        <StackLayout>
+            <forms:SKCanvasView PaintSurface="SKCanvasView_PaintSurface" IsVisible="false"/>
+            <colorpicker:ColorWheel x:Name="ColorWheel1" IsVisible="false" Padding="10">
+                <colorpicker:ColorWheel.Behaviors>
+                    <behaviors:EventToCommandBehavior EventName="PropertyChanged" Command="{Binding ChangeToolbarCommand}" CommandParameter="{Binding Source={x:Reference ColorWheel1}}"/>
+                </colorpicker:ColorWheel.Behaviors>
+            </colorpicker:ColorWheel>
+            <colorpicker:ColorTriangle x:Name="ColorTriangle1" ConnectedColorPicker="{x:Reference Name=ColorWheel1}" IsVisible="true" Padding="10"/>
+        </StackLayout>
+
+        <StackLayout >
+            <Label Text="Effekt" FontAttributes="Bold"/>
+            <Picker SelectedItem="{Binding Effect}" ItemsSource="{Binding Effects}"/>
+            <Label Text="Zone" FontAttributes="Bold"/>
+            <Picker SelectedItem="{Binding Zone}" ItemsSource="{Binding Zones}"/>
+        </StackLayout>
 
     </StackLayout>
 </ContentPage>

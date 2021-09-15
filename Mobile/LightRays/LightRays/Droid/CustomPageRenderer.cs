@@ -29,8 +29,8 @@ namespace LightRays.Droid
             var toolbar = MainActivity.RootFindViewById<AndroidX.AppCompat.Widget.Toolbar>(Resource.Id.toolbar);
             if (toolbar == null) return;
 
-            toolbar.SetBackground(new GradientDrawable(GradientDrawable.Orientation.RightLeft,
-                new int[] { Color.Red.ToAndroid(), Color.Blue.ToAndroid() }));
+            toolbar.SetBackground(new GradientDrawable(GradientDrawable.Orientation.TrBl,
+                new int[] { Color.Red.ToAndroid(), Color.Green.ToAndroid(), Color.Blue.ToAndroid() }));
         }
     }
 }
