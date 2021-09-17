@@ -3,13 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
-             xmlns:forms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              xmlns:converters="clr-namespace:LightRays.Core.Converters"
-             xmlns:behaviors="clr-namespace:LightRays.Core.Behaviors"
              mc:Ignorable="d"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:viewmodels="clr-namespace:LightRays.Core.ViewModels" x:DataType="viewmodels:MainPageViewModel"
-             Title="LightRays Mobile"
+             xmlns:xfsegmentedcontrol="clr-namespace:Udara.Plugin.XFColorPickerControl;assembly=Udara.Plugin.XFColorPickerControl"
+             Title="Regal"
+             xmlns:behaviors="clr-namespace:LightRays.Core.Behaviors"
              ios:Page.UseSafeArea="true"
              x:Class="LightRays.Core.Views.MainPage">
 
@@ -26,38 +25,106 @@
             <GradientStop Color="#1b1b1b"
                   Offset="1.0" />
         </LinearGradientBrush>
-    </ContentPage.Background>
-    <StackLayout Margin="10" Spacing="10">
+    </ContentPage.Background>   
 
-        <StackLayout Orientation="Horizontal">
-            <Button HorizontalOptions="EndAndExpand" Text="💡" 
-                        Style="{StaticResource FABPrimary}"
-                        Command="{Binding SendRequestCommand}" 
-                        CommandParameter="{Binding Source={x:Reference ColorWheel1}}" 
-                        BackgroundColor="{Binding Source={x:Reference ColorWheel1}, Path=SelectedColor}" />
-            <Button HorizontalOptions="End" Text="✈"
-                        Style="{StaticResource FABPrimary}"
-                        Command="{Binding SendRequestCommand}" 
-                        CommandParameter="{Binding Source={x:Reference ColorWheel1}}" 
-                        BackgroundColor="{Binding Source={x:Reference ColorWheel1}, Path=SelectedColor}" />
+
+    <StackLayout VerticalOptions="FillAndExpand">
+
+        <StackLayout Orientation="Horizontal" Spacing="10" Padding="10" Margin="10" VerticalOptions="Start">
+            <ImageButton HorizontalOptions="Start"
+                        Source="ic_bulb_glow"
+                        Style="{StaticResource ImageFABPrimary}"
+                        Command="{Binding UseKelvinScaleCommand}"/>
+            <ImageButton HorizontalOptions="EndAndExpand"
+                        Source="ic_bulb"
+                        Style="{StaticResource ImageFABPrimary}"
+                        Command="{Binding ChangeZoneCommand}"/>
+            <ImageButton HorizontalOptions="End"
+                        Source="ic_effect"
+                        Style="{StaticResource ImageFABPrimary}"
+                        Command="{Binding ChangeEffectCommand}"/>
+            <ImageButton HorizontalOptions="End"
+                        Source="ic_tick"
+                        Style="{StaticResource ImageFABPrimary}"
+                        Command="{Binding SendRequestCommand}"/>
+            <!--CommandParameter="{Binding Source={x:Reference ColorPicker}}"/> -->
         </StackLayout>
         
-        <StackLayout>
-            <forms:SKCanvasView PaintSurface="SKCanvasView_PaintSurface" IsVisible="false"/>
-            <colorpicker:ColorWheel x:Name="ColorWheel1" IsVisible="false" Padding="10">
-                <colorpicker:ColorWheel.Behaviors>
-                    <behaviors:EventToCommandBehavior EventName="PropertyChanged" Command="{Binding ChangeToolbarCommand}" CommandParameter="{Binding Source={x:Reference ColorWheel1}}"/>
-                </colorpicker:ColorWheel.Behaviors>
-            </colorpicker:ColorWheel>
-            <colorpicker:ColorTriangle x:Name="ColorTriangle1" ConnectedColorPicker="{x:Reference Name=ColorWheel1}" IsVisible="true" Padding="10"/>
+        <StackLayout VerticalOptions="EndAndExpand">
+            <Frame Margin="10" BorderColor="Black" CornerRadius="500" HeightRequest="300" WidthRequest="300" IsClippedToBounds="True" HorizontalOptions="Center" VerticalOptions="Center" Rotation="45" IsVisible="{Binding UseKelvinScale, Converter={StaticResource InverseBoolConverter}}">
+                <xfsegmentedcontrol:ColorPicker
+	                    x:Name="ColorPicker"
+	                    ColorFlowDirection="Vertical"
+	                    ColorSpectrumStyle="HueOnlyStyle"
+	                    HeightRequest="500"
+                        WidthRequest="500"
+                        Margin="-20"
+	                    HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        
+	                    PointerRingBorderUnits="0.3"
+	                    PointerRingDiameterUnits="0.7"
+	                    PointerRingPositionXUnits="0.6"
+	                    PointerRingPositionYUnits="0.6">
+                    <xfsegmentedcontrol:ColorPicker.BaseColorList>
+                        <x:Array Type="{x:Type x:String}">
+                            <!--  Red  -->
+                            <x:String>#ff0000</x:String>
+                            <!--  Yellow  -->
+                            <x:String>#ffff00</x:String>
+                            <!--  Green (Lime)  -->
+                            <x:String>#00ff00</x:String>
+                            <!--  Aqua  -->
+                            <x:String>#00ffff</x:String>
+                            <!--  Blue  -->
+                            <x:String>#0000ff</x:String>
+                            <!--  Fuchsia  -->
+                            <x:String>#ff00ff</x:String>
+                            <!--  Red  -->
+                            <x:String>#ff0000</x:String>
+                        </x:Array>
+                    </xfsegmentedcontrol:ColorPicker.BaseColorList>
+                    <xfsegmentedcontrol:ColorPicker.Behaviors>
+                        <behaviors:EventToCommandBehavior EventName="PickedColorChanged" Command="{Binding PickedColorChangedCommand}" CommandParameter="{Binding Source={x:Reference ColorPicker}}"/>
+                    </xfsegmentedcontrol:ColorPicker.Behaviors>
+                </xfsegmentedcontrol:ColorPicker>
+            </Frame>
+            <Frame Margin="10" BorderColor="Black" CornerRadius="500" HeightRequest="300" WidthRequest="300" IsClippedToBounds="True" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding UseKelvinScale}">
+                <xfsegmentedcontrol:ColorPicker
+	                    x:Name="ColorPickerKelvin"
+	                    ColorFlowDirection="Vertical"
+	                    ColorSpectrumStyle="HueOnlyStyle"
+	                    HeightRequest="500"
+                        WidthRequest="500"
+                        Margin="-20"
+	                    HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        
+	                    PointerRingBorderUnits="0.3"
+	                    PointerRingDiameterUnits="0.7"
+	                    PointerRingPositionXUnits="0.6"
+	                    PointerRingPositionYUnits="0.6">
+                    <xfsegmentedcontrol:ColorPicker.BaseColorList>
+                        <x:Array Type="{x:Type x:String}">
+                            <!--  Cold white  -->
+                            <x:String>#bdd1ff</x:String>
+                            <!--  Daylight  -->
+                            <x:String>#ffffff</x:String>
+                            <!--  Daylight  -->
+                            <x:String>#ffe6ce</x:String>
+                            <!--  Green (Lime)  -->
+                            <x:String>#ffc385</x:String>
+                            <!--  Aqua  -->
+                            <x:String>#ff5b00</x:String>
+                        </x:Array>
+                    </xfsegmentedcontrol:ColorPicker.BaseColorList>
+                    <xfsegmentedcontrol:ColorPicker.Behaviors>
+                        <behaviors:EventToCommandBehavior EventName="PickedColorChanged" Command="{Binding PickedColorChangedCommand}" CommandParameter="{Binding Source={x:Reference ColorPickerKelvin}}"/>
+                    </xfsegmentedcontrol:ColorPicker.Behaviors>
+                </xfsegmentedcontrol:ColorPicker>
+            </Frame>
+            <BoxView HeightRequest="100"/>
         </StackLayout>
-
-        <StackLayout >
-            <Label Text="Effekt" FontAttributes="Bold"/>
-            <Picker SelectedItem="{Binding Effect}" ItemsSource="{Binding Effects}"/>
-            <Label Text="Zone" FontAttributes="Bold"/>
-            <Picker SelectedItem="{Binding Zone}" ItemsSource="{Binding Zones}"/>
-        </StackLayout>
-
     </StackLayout>
+
 </ContentPage>

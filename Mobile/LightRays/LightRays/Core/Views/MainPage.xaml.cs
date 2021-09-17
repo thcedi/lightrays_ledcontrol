@@ -1,4 +1,5 @@
-﻿using SkiaSharp;
+﻿using LightRays.Core.Helper;
+using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System.ComponentModel;
 using Xamarin.Forms;
@@ -10,40 +11,31 @@ namespace LightRays.Core.Views
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        private string _leftColor = "#1d1d1d";
+        private string _rightColor = "#1d1d1d";
+
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void SKCanvasView_PaintSurface(object sender, SkiaSharp.Views.Forms.SKPaintSurfaceEventArgs e)
+        private void ColorPicker_PickedColorChanged(object sender, Color e)
         {
-            SKCanvas canvas = e.Surface.Canvas;
+            string colorHex = e.ToHex();
 
-            var scale = 21F;
-            SKPath path = new SKPath();
-            path.MoveTo(-1 * scale, -1 * scale);
-            path.LineTo(0 * scale, -1 * scale);
-            path.LineTo(0 * scale, 0 * scale);
-            path.LineTo(1 * scale, 0 * scale);
-            path.LineTo(1 * scale, 1 * scale);
-            path.LineTo(0 * scale, 1 * scale);
-            path.LineTo(0 * scale, 0 * scale);
-            path.LineTo(-1 * scale, 0 * scale);
-            path.LineTo(-1 * scale, -1 * scale);
 
-            SKMatrix matrix = SKMatrix.MakeScale(2 * scale, 2 * scale);
-            SKPaint paint = new SKPaint
+        }
+
+        private void ColorPickerKelvin_PickedColorChanged(object sender, Color e)
+        {
+            string colorHex = e.ToHex();
+
+            if (!string.IsNullOrEmpty(colorHex))
             {
-                PathEffect = SKPathEffect.Create2DPath(matrix, path),
-                Color = Color.LightGray.ToSKColor(),
-                IsAntialias = true
-            };
-
-            var patternRect = new SKRect(0, 0, ((SKCanvasView)sender).CanvasSize.Width, ((SKCanvasView)sender).CanvasSize.Height);
-
-            canvas.Save();
-            canvas.DrawRect(patternRect, paint);
-            canvas.Restore();
+                _rightColor = colorHex;
+                var colorModel = new ToolbarColorManager { LeftColor = Color.FromHex(_leftColor), RightColor = Color.FromHex(colorHex) };
+                MessagingCenter.Send<object, object>(this, "ChangeToolbar", colorModel);
+            }
         }
     }
 }

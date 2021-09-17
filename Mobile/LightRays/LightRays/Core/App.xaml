@@ -27,18 +27,28 @@
                 <Setter Property="TextColor" Value="Black"/>
             </Style>
             
-            <Color x:Key="DarkButtonBackground">#921813</Color>
-            
             <Style x:Key="FABPrimary" TargetType="Button">
                 <Setter Property="CornerRadius" Value="100"/>
-                <Setter Property="HeightRequest" Value="55"/>
-                <Setter Property="WidthRequest" Value="55"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="WidthRequest" Value="50"/>
+                <Setter Property="BackgroundColor" Value="#515151"/>
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="Padding" Value="15"/>
                 <Setter Property="Margin" Value="0,0,0,15"/>
             </Style>
-            
+
+            <Style x:Key="ImageFABPrimary" TargetType="ImageButton">
+                <Setter Property="CornerRadius" Value="100"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="WidthRequest" Value="50"/>
+                <Setter Property="BackgroundColor" Value="#515151"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Padding" Value="15"/>
+                <Setter Property="Margin" Value="0,0,0,15"/>
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

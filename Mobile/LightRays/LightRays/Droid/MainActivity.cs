@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 //using Xamarin.Forms;
 using Android.Graphics.Drawables;
 using Xamarin.Forms.Platform.Android;
+using LightRays.Core.Helper;
 
 namespace LightRays.Droid
 {
@@ -30,21 +31,11 @@ namespace LightRays.Droid
             //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
-            {
-                //Window.ClearFlags(WindowManagerFlags.TranslucentStatus);
-                //Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
-                //Window.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
-                ////Window.SetStatusBarColor(Android.Graphics.Color.Transparent);
-
-
-            }
-
             LoadApplication(new App(new AndroidInitializer()));
 
             Xamarin.Forms.MessagingCenter.Subscribe<object, object>(this, "ChangeToolbar", (sender, args) =>
             {
-                LightRays.Core.ViewModels.MainPageViewModel.ToolbarColorManager model = args as LightRays.Core.ViewModels.MainPageViewModel.ToolbarColorManager;
+                ToolbarColorManager model = args as ToolbarColorManager;
 
                 var toolbar = MainActivity.RootFindViewById<AndroidX.AppCompat.Widget.Toolbar>(Resource.Id.toolbar);
                 if (toolbar == null) return;

@@ -31,6 +31,7 @@ namespace LightRays.Core
             containerRegistry.RegisterForNavigation<MyMasterDetail>();
             containerRegistry.RegisterForNavigation<GradientHeaderNavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<SettingsPage, SettingsPageViewModel>();
         }
     }
 }

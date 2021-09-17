@@ -6,13 +6,63 @@
              mc:Ignorable="d"
              x:Class="LightRays.Core.Views.MyMasterDetail"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:converters="clr-namespace:LightRays.Core.Converters"
              prism:ViewModelLocator.AutowireViewModel="True"
-                  xmlns:local="clr-namespace:LightRays.Core.Views">
+             xmlns:prismbehaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:local="clr-namespace:LightRays.Core.Views" 
+             IsPresented="{Binding IsPresented}">
     
     <MasterDetailPage.Master>
-        <ContentPage Title="Default">
+        <ContentPage Title="Menu"
+                 IconImageSource="{OnPlatform iOS='hamburger.png'}"
+                     Padding="0"
+                     BackgroundColor="#121212">
+
+            <ContentPage.Resources>
+                <ResourceDictionary>
+                    <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
+                    <converters:BooleanToBackgroundColorConverter x:Key="BooleanToBackgroundColorConverter" />
+                </ResourceDictionary>
+            </ContentPage.Resources>
             <StackLayout>
-                <Button Text="MainPage" Command="{Binding NavigateCommand}" CommandParameter="GradientHeaderNavigationPage/MainPage" />
+                <BoxView HeightRequest="15"/>
+                <ListView SeparatorVisibility="None" ItemsSource="{Binding MainMenuItems}" SelectionMode="None">
+                    <ListView.Header>
+                        <Frame BackgroundColor="Transparent" HeightRequest="50">
+                            <StackLayout VerticalOptions="Center">
+                                <Label Text="XXXXXXXX" FontSize="Large" VerticalOptions="Center" TextColor="WhiteSmoke"/>
+                            </StackLayout>
+                        </Frame>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame BackgroundColor="{Binding IsSelected, Converter={StaticResource BooleanToBackgroundColorConverter}}" >
+                                    <Frame.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS" Value="-50, 0, 10, 0"/>
+                                            <On Platform="Android" Value="-40, 0, 10, 0"/>
+                                        </OnPlatform>
+                                    </Frame.Margin>
+
+                                    <Frame.CornerRadius>
+                                        <OnPlatform x:TypeArguments="x:Single">
+                                            <On Platform="iOS" Value="20"/>
+                                            <On Platform="Android" Value="50"/>
+                                        </OnPlatform>
+                                    </Frame.CornerRadius>
+
+                                    <StackLayout Padding="10" Margin="45, -20, 0, 0" VerticalOptions="Center">
+                                        <Label Text="{Binding Title}" FontSize="Medium" TextColor="WhiteSmoke" VerticalOptions="Center"/>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.Behaviors>
+                        <prismbehaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding MainMenuItemTappedCommand}" EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}"/>
+                    </ListView.Behaviors>
+                </ListView>
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>
