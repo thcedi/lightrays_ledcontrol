@@ -8,8 +8,6 @@ namespace LightRays.Core.Views
     public class GradientHeaderNavigationPage : NavigationPage
     {
         public GradientHeaderNavigationPage() { }
-        public GradientHeaderNavigationPage(Page root) : base(root) { }
-
-        
+        public GradientHeaderNavigationPage(Page root) : base(root) { }   
     }
 }

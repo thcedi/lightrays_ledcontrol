@@ -16,7 +16,7 @@ using LightRays.Core.Helper;
 
 namespace LightRays.Droid
 {
-    [Activity(Label = "LightRays", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "LightRays", Icon = "@drawable/icon", Theme = "@style/splashscreen", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected async override void OnCreate(Bundle savedInstanceState)
@@ -32,6 +32,8 @@ namespace LightRays.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             LoadApplication(new App(new AndroidInitializer()));
+
+            base.SetTheme(Resource.Style.MainTheme);
 
             Xamarin.Forms.MessagingCenter.Subscribe<object, object>(this, "ChangeToolbar", (sender, args) =>
             {

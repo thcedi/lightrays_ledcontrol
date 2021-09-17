@@ -9,10 +9,10 @@
                         >
     <Application.Resources>
         <ResourceDictionary>
-            <Style TargetType="NavigationPage">
+            <Style TargetType="{x:Type NavigationPage}" ApplyToDerivedTypes="True">
                 <Setter Property="HasNavigationBar" Value="True" />
-                <Setter Property="BarTextColor" Value="White" />
-                <Setter Property="BarBackgroundColor" Value="#1E1E1E"/>
+                <Setter Property="BarTextColor" Value="WhiteSmoke" />
+                <Setter Property="BackgroundColor" Value="#121212" />
             </Style>
             <Style TargetType="Frame">
                 <Setter Property="CornerRadius" Value="10"/>
