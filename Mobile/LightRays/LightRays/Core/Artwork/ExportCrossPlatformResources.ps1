@@ -1,10 +1,10 @@
 param (
-    $inkscape_dir = "C:\Progra~1\Inkscape\bin\",
+    $inkscape_dir = "C:\Progra~1\Inkscape\",
     $inkscape_bin = "inkscape.exe",
-    $file = "G:\LightRays\Mobile\LightRays\Artwork\Artwork.svg",
-    $android_dir = "G:\LightRays\Mobile\LightRays\LightRays\Droid\Resources",
-	$uwp_dir = "..\LightRays\LightRays\UWP",
-	$ios_dir = "G:\LightRays\Mobile\LightRays\LightRays\iOS\Resources",
+    $file = "Artwork.svg",
+    $android_dir = "C:\Users\CNagler.LACOSINTERN\Pictures\Saved Pictures\lightrays_ledcontrol\Mobile\LightRays\LightRays\Droid\Resources",
+	$uwp_dir = "..\..\UWP",
+	$ios_dir = "..\..\iOS\Resources",
 	$slice_layer_name = "SlicesCrossPlatformResources"
 )
 
@@ -32,10 +32,10 @@ foreach ($group in $groups) {
 				write-host -NoNewLine "Exporting $filename "
 				
 				# Export to different densities for Android
-				$cmd_mdpi = "$inkscape --export-id=$export_id --export-png=..\drawable-mdpi\$filename --file=$svgfile --export-dpi=90 --export-background-opacity=0.0"
-				$cmd_hdpi = "$inkscape --export-id=$export_id --export-png=$android_dir\drawable-hdpi\$filename --file=$svgfile --export-dpi=135 --export-background-opacity=0.0"
-				$cmd_xhdpi = "$inkscape --export-id=$export_id --export-png=$android_dir\drawable-xhdpi\$filename --file=$svgfile --export-dpi=180 --export-background-opacity=0.0"
-				$cmd_xxhdpi = "$inkscape --export-id=$export_id --export-png=$android_dir\drawable-xxhdpi\$filename --file=$svgfile --export-dpi=270 --export-background-opacity=0.0"
+				$cmd_mdpi = "$inkscape --export-id=$export_id --export-png=$android_dir\mipmap-mdpi\$filename --file=$svgfile --export-dpi=90 --export-background-opacity=0.0"
+				$cmd_hdpi = "$inkscape --export-id=$export_id --export-png=$android_dir\mipmap-hdpi\$filename --file=$svgfile --export-dpi=135 --export-background-opacity=0.0"
+				$cmd_xhdpi = "$inkscape --export-id=$export_id --export-png=$android_dir\mipmap-xhdpi\$filename --file=$svgfile --export-dpi=180 --export-background-opacity=0.0"
+				$cmd_xxhdpi = "$inkscape --export-id=$export_id --export-png=$android_dir\mipmap-xxhdpi\$filename --file=$svgfile --export-dpi=270 --export-background-opacity=0.0"
 				invoke-expression -command $cmd_mdpi
 				write-host -NoNewLine "."
 				invoke-expression -command $cmd_hdpi
