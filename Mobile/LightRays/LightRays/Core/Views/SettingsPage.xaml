@@ -3,31 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:behaviors="clr-namespace:LightRays.Core.Behaviors"
              mc:Ignorable="d"
              x:Class="LightRays.Core.Views.SettingsPage"
              Title="Einstellungen">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <behaviors:EventToCommandBehavior x:Key="EventToCommandBehavior"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand">
-            <Frame VerticalOptions="FillAndExpand">
+        <StackLayout>
+            <Frame BackgroundColor="#1d1d1d" Margin="5, 10">
                 <StackLayout>
-                    <Label Text="XXXX" FontAttributes="Bold"/>
-                    <Picker>
-                        <Picker.Items>
-                            <x:String>Kamera</x:String>
-                        </Picker.Items>
-                    </Picker>
-                    <Label Text="Info" FontAttributes="Bold"/>
-                    <Label>
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="XXXXXXXXXXXXXXXX"/>
-                                <Span Text="XXXXXXXXXXXXXXXX"/>
-                                <Span Text="XXXXXXXXXXXXXXXX"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Button Text="XXX" VerticalOptions="EndAndExpand"/>
+                    <Label Text="IP-Adresse" FontAttributes="Bold"/>
+                    <Entry PlaceholderColor="WhiteSmoke" TextColor="WhiteSmoke" Text="{Binding URI}">
+                        <Entry.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ApiUriChangedCommand}"/>
+                        </Entry.Behaviors>
+                    </Entry>
                 </StackLayout>
             </Frame>
         </StackLayout>

@@ -30,7 +30,7 @@
                     <ListView.Header>
                         <Frame BackgroundColor="Transparent" HeightRequest="50">
                             <StackLayout VerticalOptions="Center">
-                                <Label Text="XXXXXXXX" FontSize="Large" VerticalOptions="Center" TextColor="WhiteSmoke"/>
+                                <Label Text="LightRays" FontSize="Large" VerticalOptions="Center" TextColor="WhiteSmoke"/>
                             </StackLayout>
                         </Frame>
                     </ListView.Header>

@@ -19,7 +19,7 @@ namespace LightRays.Core
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync($"MyMasterDetail/GradientHeaderNavigationPage/MainPage");
+            await NavigationService.NavigateAsync("MyMasterDetail/GradientHeaderNavigationPage/MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

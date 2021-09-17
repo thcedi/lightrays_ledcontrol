@@ -30,7 +30,7 @@ namespace LightRays.Droid
             if (toolbar == null) return;
 
             toolbar.SetBackground(new GradientDrawable(GradientDrawable.Orientation.TrBl,
-                new int[] { Color.Red.ToAndroid(), Color.Green.ToAndroid(), Color.Blue.ToAndroid() }));
+                new int[] { Color.FromHex("#1d1d1d").ToAndroid(), Color.FromHex("#121212").ToAndroid() }));
         }
     }
 }

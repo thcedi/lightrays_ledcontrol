@@ -11,31 +11,15 @@ namespace LightRays.Core.Views
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        private string _leftColor = "#1d1d1d";
-        private string _rightColor = "#1d1d1d";
-
         public MainPage()
         {
             InitializeComponent();
-        }
 
-        private void ColorPicker_PickedColorChanged(object sender, Color e)
-        {
-            string colorHex = e.ToHex();
-
-
-        }
-
-        private void ColorPickerKelvin_PickedColorChanged(object sender, Color e)
-        {
-            string colorHex = e.ToHex();
-
-            if (!string.IsNullOrEmpty(colorHex))
+            Device.BeginInvokeOnMainThread(async () => 
             {
-                _rightColor = colorHex;
-                var colorModel = new ToolbarColorManager { LeftColor = Color.FromHex(_leftColor), RightColor = Color.FromHex(colorHex) };
-                MessagingCenter.Send<object, object>(this, "ChangeToolbar", colorModel);
-            }
+                containerColorPicker.Opacity = 0;
+                await containerColorPicker.FadeTo(1, 500);
+            });
         }
     }
 }

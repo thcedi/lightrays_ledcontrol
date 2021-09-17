@@ -38,6 +38,8 @@ namespace LightRays.Core.ViewModels
 
             RefreshMainMenuItems();
             RefreshSelection();
+
+            Settings.CurrentView = "MyMasterDetail/GradientHeaderNavigationPage/MainPage";
         }
 
         private void RefreshMainMenuItems()
@@ -70,11 +72,6 @@ namespace LightRays.Core.ViewModels
             else if (menuItem.Target == "LOGOUT")
             {
                 await _navigationService.GoBackAsync();
-            }
-            else if(Settings.CurrentView == menuItem.Target)
-            {
-                IsPresented = false;
-                return;
             }
             else
             {

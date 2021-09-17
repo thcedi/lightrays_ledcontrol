@@ -100,9 +100,9 @@ namespace LightRays.Core.ViewModels
         {
             if (string.IsNullOrEmpty(Zone) || string.IsNullOrEmpty(Effect)) return;
 
-            var colorHex = UseKelvinScale ? SelectedKelvin.ToHex() : SelectedColor.ToHex();
             if(Effect == "Single color")
             {
+                var colorHex = UseKelvinScale ? SelectedKelvin.ToHex() : SelectedColor.ToHex();
                 var colorTuple = HexToColor(colorHex);
                 var requestString = string.Format("{0}{1}{2}{3}", Zone, colorTuple.Item1.ToString().PadLeft(3, '0'), colorTuple.Item2.ToString().PadLeft(3, '0'), colorTuple.Item3.ToString().PadLeft(3, '0'));
                 await _requestService.GetRequest(_uri, requestString);

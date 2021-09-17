@@ -18,17 +18,8 @@
             <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.Background>
-        <LinearGradientBrush EndPoint="1,0">
-            <GradientStop Color="#272727"
-                  Offset="0.0" />
-            <GradientStop Color="#1b1b1b"
-                  Offset="1.0" />
-        </LinearGradientBrush>
-    </ContentPage.Background>   
 
-
-    <StackLayout VerticalOptions="FillAndExpand">
+    <StackLayout VerticalOptions="FillAndExpand" x:Name="containerColorPicker">
 
         <StackLayout Orientation="Horizontal" Spacing="10" Padding="10" Margin="10" VerticalOptions="Start">
             <ImageButton HorizontalOptions="Start"
