@@ -36,6 +36,7 @@ namespace LightRays.Core.ViewModels
         public DelegateCommand ChangeEffectCommand { get; set; }
         public DelegateCommand UseKelvinScaleCommand { get; set; }
         public DelegateCommand<object> PickedColorChangedCommand { get; set; }
+        public DelegateCommand TurnOffCommand { get; set; }
 
         public MainPageViewModel(INavigationService navigationService, IRequestService requestService) : base(navigationService)
         {
@@ -45,6 +46,12 @@ namespace LightRays.Core.ViewModels
             ChangeEffectCommand = new DelegateCommand(ChangeEffect);
             UseKelvinScaleCommand = new DelegateCommand(ChangeUseKelvinScale);
             PickedColorChangedCommand = new DelegateCommand<object>(PickedColorChanged);
+            TurnOffCommand = new DelegateCommand(TurnOff);
+        }
+
+        private async void TurnOff()
+        {
+            await _requestService.GetRequest(_uri, "0000000000");
         }
 
         private void PickedColorChanged(object e)

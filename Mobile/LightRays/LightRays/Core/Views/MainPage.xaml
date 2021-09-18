@@ -19,6 +19,10 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_power" Command="{Binding TurnOffCommand}"/>
+    </ContentPage.ToolbarItems>
+
     <StackLayout VerticalOptions="FillAndExpand" x:Name="containerColorPicker">
 
         <StackLayout Orientation="Horizontal" Spacing="10" Padding="10" Margin="10" VerticalOptions="Start">
