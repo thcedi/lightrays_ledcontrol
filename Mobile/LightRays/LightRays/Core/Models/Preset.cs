@@ -1,13 +1,18 @@
-﻿using Xamarin.Forms;
+﻿using SQLite;
+using System.ComponentModel;
 
 namespace LightRays.Core.Models
 {
-    public class Preset
+    public class Preset : INotifyPropertyChanged
     {
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+
         public string Name { get; set; }
-        public Color Color1 { get; set; }
-        public Color Color2 { get; set; }
-        public Color Color3 { get; set; }
+        public string Color1 { get; set; }
+        public string Color2 { get; set; }
+        public string Color3 { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:LightRays.Core.Converters"
+             mc:Ignorable="d"
+             x:Class="LightRays.Core.Views.PresetPage"
+             Title="Presets">
+
+    <ContentPage.Resources>
+        <converters:HexToXFColorConverter x:Key="HexToXFColorConverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Padding="6, 12">
+            <ListView ItemsSource="{Binding Presets}" IsPullToRefreshEnabled="True" HasUnevenRows="True" CachingStrategy="RecycleElementAndDataTemplate">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame CornerRadius="12" HeightRequest="60" BackgroundColor="Transparent" x:Name="siteOpType" Margin="6">
+                                <Frame.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="{Binding Source={x:Reference siteOpType}, Path=BindingContext.Color1}" Offset="0.1"/>
+                                        <GradientStop Color="{Binding Source={x:Reference siteOpType}, Path=BindingContext.Color2}" Offset="0.5"/>
+                                        <GradientStop Color="{Binding Source={x:Reference siteOpType}, Path=BindingContext.Color3}" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Frame.Background>
+                                <StackLayout>
+                                    <Label Text="{Binding Name}" TextColor="#1f1f1f" FontAttributes="Bold"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

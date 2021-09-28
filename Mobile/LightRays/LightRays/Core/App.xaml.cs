@@ -1,4 +1,5 @@
 ﻿using LightRays.Core.Services;
+using LightRays.Core.Services.PresetService;
 using LightRays.Core.ViewModels;
 using LightRays.Core.Views;
 using Prism;
@@ -26,11 +27,15 @@ namespace LightRays.Core
         {
             containerRegistry.RegisterSingleton<IDialogService, DialogService>();
             containerRegistry.RegisterSingleton<IRequestService, RequestServiceWeb>();
+            containerRegistry.RegisterSingleton<IDatabaseService, DatabaseServiceSQLite>();
+            containerRegistry.RegisterSingleton<IPresetService, PresetService>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MyMasterDetail>();
             containerRegistry.RegisterForNavigation<GradientHeaderNavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<InfoPage, InfoPageViewModel>();
+            containerRegistry.RegisterForNavigation<PresetPage, PresetPageViewModel>();
             containerRegistry.RegisterForNavigation<SettingsPage, SettingsPageViewModel>();
         }
     }

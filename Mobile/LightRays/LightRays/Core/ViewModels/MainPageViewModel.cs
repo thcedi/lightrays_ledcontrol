@@ -24,6 +24,7 @@ namespace LightRays.Core.ViewModels
         private string _uri = Settings.Uri;
 
         private IRequestService _requestService;
+        private IDatabaseService _databaseService;
 
         public string Zone { get => _zone; set => SetProperty(ref _zone, value); }
         public string Effect { get => _effect; set => SetProperty(ref _effect, value); }
@@ -38,9 +39,10 @@ namespace LightRays.Core.ViewModels
         public DelegateCommand<object> PickedColorChangedCommand { get; set; }
         public DelegateCommand TurnOffCommand { get; set; }
 
-        public MainPageViewModel(INavigationService navigationService, IRequestService requestService) : base(navigationService)
+        public MainPageViewModel(INavigationService navigationService, IRequestService requestService, IDatabaseService databaseService) : base(navigationService)
         {
             _requestService = requestService;
+            _databaseService = databaseService;
             SendRequestCommand = new DelegateCommand(SendRequest);
             ChangeZoneCommand = new DelegateCommand(ChangeZone);
             ChangeEffectCommand = new DelegateCommand(ChangeEffect);

@@ -58,7 +58,7 @@ namespace LightRays.Droid
         {
             get
             {
-                var path = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.ToString(), "LightRays");
+                var path = Path.Combine(Android.App.Application.Context.GetExternalFilesDir(null).AbsolutePath, "LightRays");
                 var pathNotes = Path.Combine(path, base.NotesDirectoryName);
                 var pathNotifications = Path.Combine(path, base.NotificationsDirectoryName);
                 var pathTemp = Path.Combine(path, base.TempDirectoryName);
