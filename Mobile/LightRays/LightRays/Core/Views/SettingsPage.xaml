@@ -6,7 +6,7 @@
              xmlns:behaviors="clr-namespace:LightRays.Core.Behaviors"
              mc:Ignorable="d"
              x:Class="LightRays.Core.Views.SettingsPage"
-             Title="Einstellungen">
+             Title="Settings">
     <ContentPage.Resources>
         <ResourceDictionary>
             <behaviors:EventToCommandBehavior x:Key="EventToCommandBehavior"/>
@@ -15,7 +15,7 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Frame BackgroundColor="#1d1d1d" Margin="5, 10">
+            <Frame BackgroundColor="#1d1d1d" Margin="0, 10">
                 <StackLayout>
                     <Label Text="IP-Adresse" FontAttributes="Bold"/>
                     <Entry PlaceholderColor="WhiteSmoke" TextColor="WhiteSmoke" Text="{Binding URI}">

@@ -1,10 +1,83 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LightRays.Core.Views.PresetDetailsPage">
+             xmlns:xfsegmentedcontrol="clr-namespace:Udara.Plugin.XFColorPickerControl;assembly=Udara.Plugin.XFColorPickerControl"
+             xmlns:behaviors="clr-namespace:LightRays.Core.Behaviors" 
+             x:Class="LightRays.Core.Views.PresetDetailsPage"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_tick" Command="{Binding SaveChangesCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-      <StackLayout>
-          <Label Text="Hello Xamarin.Forms!" />
-      </StackLayout>
+        <StackLayout>
+
+            <Frame BackgroundColor="#1d1d1d" Margin="0, 10">
+                <StackLayout Spacing="20" Padding="0">
+                    <Label Text="Name" TextColor="WhiteSmoke" FontAttributes="Bold"/>
+                    <Entry Text="{Binding Preset.Name}" TextColor="WhiteSmoke"/>
+                    <Label Text="Farben" TextColor="WhiteSmoke" FontAttributes="Bold"/>
+                    <Grid ColumnSpacing="40" HorizontalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="75"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="75"/>
+                        </Grid.ColumnDefinitions>
+                        <Button BackgroundColor="{Binding Preset.Color1}" CornerRadius="10" Grid.Column="0" Command="{Binding ColorFrameTappedCommand}" CommandParameter="1"/>
+                        <Button BackgroundColor="{Binding Preset.Color2}" CornerRadius="10" Grid.Column="1" Command="{Binding ColorFrameTappedCommand}" CommandParameter="2"/>
+                        <Button BackgroundColor="{Binding Preset.Color3}" CornerRadius="10" Grid.Column="2" Command="{Binding ColorFrameTappedCommand}" CommandParameter="3"/>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+            
+            <BoxView HeightRequest="25"/>
+            
+            <StackLayout VerticalOptions="End">
+                <Frame Margin="10" BorderColor="Black" CornerRadius="500" HeightRequest="250" WidthRequest="250" IsClippedToBounds="True" HorizontalOptions="Center" VerticalOptions="Center" Rotation="45">
+                    <xfsegmentedcontrol:ColorPicker
+	                    x:Name="ColorPicker"
+	                    ColorFlowDirection="Vertical"
+	                    ColorSpectrumStyle="HueOnlyStyle"
+	                    HeightRequest="500"
+                        WidthRequest="500"
+                        Margin="-20"
+	                    HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        
+	                    PointerRingBorderUnits="0.3"
+	                    PointerRingDiameterUnits="0.7"
+	                    PointerRingPositionXUnits="0.6"
+	                    PointerRingPositionYUnits="0.6">
+                        <xfsegmentedcontrol:ColorPicker.BaseColorList>
+                            <x:Array Type="{x:Type x:String}">
+                                <!--  Red  -->
+                                <x:String>#ff0000</x:String>
+                                <!--  Yellow  -->
+                                <x:String>#ffff00</x:String>
+                                <!--  Green (Lime)  -->
+                                <x:String>#00ff00</x:String>
+                                <!--  Aqua  -->
+                                <x:String>#00ffff</x:String>
+                                <!--  Blue  -->
+                                <x:String>#0000ff</x:String>
+                                <!--  Fuchsia  -->
+                                <x:String>#ff00ff</x:String>
+                                <!--  Red  -->
+                                <x:String>#ff0000</x:String>
+                            </x:Array>
+                        </xfsegmentedcontrol:ColorPicker.BaseColorList>
+                        <xfsegmentedcontrol:ColorPicker.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="PickedColorChanged" Command="{Binding PickedColorChangedCommand}" CommandParameter="{Binding Source={x:Reference ColorPicker}}"/>
+                        </xfsegmentedcontrol:ColorPicker.Behaviors>
+                    </xfsegmentedcontrol:ColorPicker>
+                </Frame>
+            </StackLayout>
+
+            <BoxView HeightRequest="25"/>
+
+        </StackLayout>
   </ContentPage.Content>
 </ContentPage>

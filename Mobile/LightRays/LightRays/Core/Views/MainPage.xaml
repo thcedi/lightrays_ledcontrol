@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:viewmodels="clr-namespace:LightRays.Core.ViewModels" x:DataType="viewmodels:MainPageViewModel"
              xmlns:xfsegmentedcontrol="clr-namespace:Udara.Plugin.XFColorPickerControl;assembly=Udara.Plugin.XFColorPickerControl"
-             Title="Regal"
+             Title="Controller"
              xmlns:behaviors="clr-namespace:LightRays.Core.Behaviors"
              ios:Page.UseSafeArea="true"
              x:Class="LightRays.Core.Views.MainPage">

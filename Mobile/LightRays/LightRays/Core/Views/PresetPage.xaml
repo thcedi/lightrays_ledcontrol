@@ -13,6 +13,13 @@
         <converters:HexToXFColorConverter x:Key="HexToXFColorConverter"/>
     </ContentPage.Resources>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_delete" Command="{Binding DeletePresetCommand}"/>
+        <ToolbarItem IconImageSource="ic_edit" Command="{Binding EditPresetCommand}"/>
+        <ToolbarItem IconImageSource="ic_add" Command="{Binding AddPresetCommand}"/>
+        <ToolbarItem IconImageSource="ic_tick" Command="{Binding ApplyPresetCommand}"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <StackLayout Padding="6, 12">
             <ListView ItemsSource="{Binding Presets}" SelectedItem="{Binding SelectedPreset}" IsPullToRefreshEnabled="True" HasUnevenRows="True" CachingStrategy="RecycleElementAndDataTemplate">
@@ -28,7 +35,7 @@
                                     </LinearGradientBrush>
                                 </Frame.Background>
                                 <StackLayout>
-                                    <Label Text="{Binding Name}" TextColor="#1f1f1f" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Name}" TextColor="#1f1f1f"/>
                                 </StackLayout>
                             </Frame>
                         </ViewCell>

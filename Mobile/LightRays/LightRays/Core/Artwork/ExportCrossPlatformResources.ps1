@@ -2,7 +2,7 @@ param (
     $inkscape_dir = "C:\Progra~1\Inkscape\",
     $inkscape_bin = "inkscape.exe",
     $file = "Artwork.svg",
-    $android_dir = "C:\Users\CNagler.LACOSINTERN\Pictures\Saved Pictures\lightrays_ledcontrol\Mobile\LightRays\LightRays\Droid\Resources",
+    $android_dir = "..\..\Droid\Resources",
 	$uwp_dir = "..\..\UWP",
 	$ios_dir = "..\..\iOS\Resources",
 	$slice_layer_name = "SlicesCrossPlatformResources"
