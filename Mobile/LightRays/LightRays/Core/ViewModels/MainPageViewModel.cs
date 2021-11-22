@@ -39,7 +39,7 @@ namespace LightRays.Core.ViewModels
         public DelegateCommand<object> PickedColorChangedCommand { get; set; }
         public DelegateCommand TurnOffCommand { get; set; }
 
-        public MainPageViewModel(INavigationService navigationService, IRequestService requestService, IDatabaseService databaseService) : base(navigationService)
+        public MainPageViewModel(IRequestService requestService, IDatabaseService databaseService)
         {
             _requestService = requestService;
             _databaseService = databaseService;

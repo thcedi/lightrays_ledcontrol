@@ -36,6 +36,7 @@ namespace LightRays.Core
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<InfoPage, InfoPageViewModel>();
             containerRegistry.RegisterForNavigation<PresetPage, PresetPageViewModel>();
+            containerRegistry.RegisterForNavigation<PresetDetailsPage, PresetDetailsPageViewModel>();
             containerRegistry.RegisterForNavigation<SettingsPage, SettingsPageViewModel>();
         }
     }

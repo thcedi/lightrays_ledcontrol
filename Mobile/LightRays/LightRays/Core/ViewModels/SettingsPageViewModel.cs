@@ -12,7 +12,7 @@ namespace LightRays.Core.ViewModels
 
         public DelegateCommand ApiUriChangedCommand { get; set; }
 
-        public SettingsPageViewModel(INavigationService navigationService) : base(navigationService)
+        public SettingsPageViewModel()
         {
             URI = Settings.Uri;
             ApiUriChangedCommand = new DelegateCommand(ApiUriChanged);

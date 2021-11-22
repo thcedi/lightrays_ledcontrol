@@ -12,14 +12,21 @@ namespace LightRays.Core.ViewModels
     public class PresetPageViewModel : ViewModelPageBase
     {
         private ObservableCollection<Preset> _presets;
+        private Preset _selectedPreset;
 
         private readonly IPresetService _presetService;
 
+        public Preset SelectedPreset { get => _selectedPreset; set => SetProperty(ref _selectedPreset, value); }
+
         public ObservableCollection<Preset> Presets { get => _presets; set => SetProperty(ref _presets, value); }
 
-        public PresetPageViewModel(INavigationService navigationService, IPresetService presetService) : base(navigationService)
+        public DelegateCommand NavigateToDetailsCommand { get; set; }
+
+        public PresetPageViewModel(IPresetService presetService)
         {
             _presetService = presetService;
+
+            NavigateToDetailsCommand = new DelegateCommand(NavigateToDetails);
 
             var mockData = new List<Preset>()
             {
@@ -28,6 +35,11 @@ namespace LightRays.Core.ViewModels
             };
 
             Presets = new ObservableCollection<Preset>(mockData);
+        }
+
+        private async void NavigateToDetails()
+        {
+            await NavigationService.NavigateAsync("PresetDetailsPage", new NavigationParameters() { { "SelectedPreset", SelectedPreset } });
         }
     }
 }

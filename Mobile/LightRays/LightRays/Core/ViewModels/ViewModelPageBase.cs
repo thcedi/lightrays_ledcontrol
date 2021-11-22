@@ -20,12 +20,11 @@ namespace LightRays.Core.ViewModels
         public bool IsBusy { get => _isBusy; set => SetProperty(ref _isBusy, value, () => { RaisePropertyChanged(nameof(IsNotBusy)); ChangeBusyState(value); }); }
         public bool IsNotBusy { get => !IsBusy; }
 
-        protected ViewModelPageBase(INavigationService navigationService)
+        protected ViewModelPageBase()
         {
             var container = ((Prism.PrismApplicationBase)Xamarin.Forms.Application.Current).Container;
-            NavigationService = navigationService;
+            NavigationService = container.Resolve<INavigationService>();
             DialogService = container.Resolve<IDialogService>();
-            //Platform = container.Resolve<IPlatform>();
         }
 
         public virtual void OnNavigatedFrom(INavigationParameters parameters) { }
